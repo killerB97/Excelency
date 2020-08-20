@@ -1,0 +1,61 @@
+actions:
+- action_add_columns
+- action_insert_columns
+- action_sort_columns
+- utter_ask_columns
+- utter_ask_destination
+- utter_ask_pointer
+- utter_cheer_up
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot
+entities:
+- destination
+- parameters
+- pointer
+intents:
+- add
+- sort
+- insert
+- grateful
+- greet
+- goodbye
+- affirm
+- deny
+- mood_great
+- mood_unhappy
+- bot_challenge
+responses:
+  utter_ask_columns:
+  - text: Can you specify the input columns?
+  utter_ask_destination:
+  - text: Can you specify the destination column?
+  utter_ask_pointer:
+  - text: can you specify if it is ascending or descending?
+  utter_cheer_up:
+  - image: https://i.imgur.com/nGF1K8f.jpg
+    text: 'Here is something to cheer you up:'
+  utter_did_that_help:
+  - text: Did that help you?
+  utter_goodbye:
+  - text: Bye
+  utter_greet:
+  - text: Hey! How are you?
+  utter_happy:
+  - text: Great, carry on!
+  - text: That's good to hear, What else can I help you with?
+  utter_iamabot:
+  - text: I am a Lency, If you have a problem with the name take it up with Shourya
+      Shukla
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 60
+slots:
+  destination:
+    type: text
+  parameters:
+    type: list
+  pointer:
+    type: text
