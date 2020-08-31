@@ -254,7 +254,7 @@
     - action_sort_columns
 
 
-## interactive_story_1
+## long add insert path
 * add{"parameters": "B", "destination": "C"}
     - slot{"destination": "C"}
     - slot{"parameters": ["A", "B"]}
@@ -269,3 +269,98 @@
 * sort{"pointer": "descending"}
     - slot{"pointer": "descending"}
     - action_sort_columns
+
+## long add sort path
+* add{"parameters": "b", "destination": "k"}
+    - slot{"destination": "k"}
+    - slot{"parameters": ["a", "b"]}
+    - action_add_columns
+* sort{"parameters": "K"}
+    - slot{"parameters": ["K"]}
+    - utter_ask_pointer
+* sort{"pointer": "ascending"}
+    - slot{"pointer": "ascending"}
+    - action_sort_columns
+* insert{"parameters": "b"}
+    - slot{"parameters": ["a", "b"]}
+    - action_insert_columns
+* insert{"parameters": "p"}
+    - slot{"parameters": ["o", "p"]}
+    - action_insert_columns
+* add{"parameters": "c", "destination": "g"}
+    - slot{"destination": "g"}
+    - slot{"parameters": ["a", "c"]}
+    - action_add_columns
+* sort{"parameters": "L"}
+    - slot{"parameters": ["L"]}
+    - utter_ask_pointer
+* sort{"pointer": "descending"}
+    - slot{"pointer": "descending"}
+    - action_sort_columns
+* insert{"parameters": "g"}
+    - slot{"parameters": ["f", "g"]}
+    - action_insert_columns
+* grateful
+    - utter_happy
+* sort{"parameters": "P", "pointer": "descending"}
+    - slot{"parameters": ["P"]}
+    - slot{"pointer": "descending"}
+    - action_sort_columns
+
+## delete happy path
+* greet
+  - utter_greet
+* delete
+  -  action_delete
+## interactive_story_1
+* delete{"axis": "rows"}
+    - slot{"axis": "rows"}
+    - action_delete
+    - slot{"params": null}
+* delete{"axis": "columns", "params": "B"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["B"]}
+    - action_delete
+    - slot{"params": null}
+* delete{"axis": "columns"}
+    - slot{"axis": "columns"}
+    - action_delete
+    - slot{"params": null}
+* delete{"axis": "rows", "params": "2"}
+    - slot{"axis": "rows"}
+    - slot{"params": ["2"]}
+    - action_delete
+    - slot{"params": null}
+
+## interactive_story_1
+* greet
+    - utter_greet
+* add{"parameters": "B", "destination": "C"}
+    - slot{"destination": "C"}
+    - slot{"parameters": ["A", "B"]}
+    - action_add_columns
+* delete{"axis": "rows", "params": "3"}
+    - slot{"axis": "rows"}
+    - slot{"params": ["3"]}
+    - action_delete
+    - slot{"params": null}
+* delete{"axis": "columns", "params": "c"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["c"]}
+    - action_delete
+    - slot{"params": null}
+* insert{"destination": "c"}
+    - slot{"destination": "c"}
+    - action_insert_columns
+* delete{"axis": "columns", "params": "B"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["B"]}
+    - action_delete
+    - slot{"params": null}
+* insert{"parameters": "C"}
+    - slot{"parameters": ["B", "C"]}
+    - action_insert_columns
+* delete{"axis": "columns"}
+    - slot{"axis": "columns"}
+    - action_delete
+    - slot{"params": null}

@@ -12,6 +12,7 @@ import xlwings as xw
 import pandas as pd
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet
 
 
 class ActionAddColumns(Action):
@@ -112,3 +113,72 @@ class ActionInsertColumns(Action):
 
         return []
 
+class ActionDeleteColumns(Action):
+
+    def name(self) -> Text:
+        return "action_delete"
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        wbook = xw.Book('test.xlsx').sheets[0]
+        axis = tracker.get_slot('axis')
+        param = tracker.get_slot('params')
+        sheet1 = wbook.used_range.value
+        df = pd.DataFrame(sheet1)
+        if axis.lower() == 'rows' and param==None:
+            wbook.clear_contents()
+            df.dropna(how='all', inplace=True)
+            wbook.range('A1').options(index=False, header=False,).value = df.values
+            dispatcher.utter_message(text="Sure I'll delete all empty rows")
+        
+        elif axis.lower() == 'columns' and param==None:
+            wbook.clear_contents()
+            df.dropna(axis=1, how='all', inplace=True)
+            wbook.range('A1').options(index=False, header=False).value = df.values
+            dispatcher.utter_message(text="Sure I'll delete all empty columns")
+        
+        elif axis.lower() == 'columns':
+            wbook.range(param[0]+':'+param[0]).api.delete()
+            dispatcher.utter_message(text="Sure I'll delete column {}".format(param[0]))
+
+        elif axis.lower() == 'rows':
+            wbook.range(param[0]+':'+param[0]).api.delete()
+            dispatcher.utter_message(text="Sure I'll delete row {}".format(param[0]))
+
+        return [SlotSet("params", None)]
+
+
+class ActionMergeColumns(Action):
+
+    def name(self) -> Text:
+        return "action_merge_columns"
+
+    def colNameToNum(self,name):
+        pow = 1
+        colNum = 0
+        for letter in name[::-1]:
+                colNum += (int(letter, 36) -9) * pow
+                pow *= 26
+        return colNum-1
+
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        wbook = xw.Book('test.xlsx').sheets[0]
+        columns = tracker.get_slot('parameters')
+        delimiter = tracker.get_slot('symbol')
+        if len(delimiter)==0:
+            delimiter=' '
+        pd_cols = columns[:]
+        for i,n in enumerate(columns):
+            pd_cols[i] = colNameToNum(n) 
+        sheet1 = wbook.used_range.value
+        df = pd.DataFrame(sheet1)
+        wbook.range(columns[0]+'1').options(index=False, header=False, transpose=True).value  = df[[pd_cols[0], pd_cols[1]]].apply(lambda row: delimiter.join(row.values.astype(str)), axis=1).values 
+        wbook.range(columns[1]+':'+columns[1]).api.clear_contents()
+        dispatcher.utter_message(text="Sure I'll merge columns {} and {}".format(columns[0],columns[1]))
+
+        return []

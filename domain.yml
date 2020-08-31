@@ -1,5 +1,6 @@
 actions:
 - action_add_columns
+- action_delete
 - action_insert_columns
 - action_sort_columns
 - utter_ask_columns
@@ -12,15 +13,18 @@ actions:
 - utter_happy
 - utter_iamabot
 entities:
+- axis
 - destination
 - parameters
+- params
 - pointer
 intents:
-- add
-- sort
-- insert
-- grateful
 - greet
+- add
+- delete
+- insert
+- sort
+- grateful
 - goodbye
 - affirm
 - deny
@@ -34,6 +38,8 @@ responses:
   - text: Can you specify the destination column?
   utter_ask_pointer:
   - text: can you specify if it is ascending or descending?
+  utter_ask_symbol:
+  - text: can you specify the merge separator symbol by text, click enter to go with default space.
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -53,9 +59,15 @@ session_config:
   carry_over_slots_to_new_session: true
   session_expiration_time: 60
 slots:
+  axis:
+    type: text
   destination:
     type: text
   parameters:
     type: list
+  params:
+    type: list
   pointer:
+    type: text
+  symbol:
     type: text

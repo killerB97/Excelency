@@ -8,6 +8,7 @@
 - Hi there
 - Hi
 - Hello
+- hi there
 
 ## intent:goodbye
 - bye
@@ -58,6 +59,7 @@
 - Can you add column [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} and store it in [C](destination)
 - can you add [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} to [C](destination)
 - can you add them again to [F](destination) instead
+- can you add column [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} to [C](destination)
 
 ## intent:sort
 - can you sort column [B](parameters) in [ascending](pointer) order
@@ -98,6 +100,33 @@
 - can you insert a column in between [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
 - insert column between [E]{"entity": "parameters", "role": "first"} and [F]{"entity": "parameters", "role": "first"}
 - please insert column between [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
+- insert a column on [c](destination)
+- insert a column in between [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
+
+## intent:delete
+- delete all empty [rows](axis)
+- delete all empty [row](axis)
+- remove all empty [horizontals](axis)
+- clear all empty [cols](axis)
+- remove empty [columns](axis)
+- delete empty [col](axis)
+- clear empty [row](axis)
+- get rid of all empty [verticals](axis)
+- get rid of empty [rows](axis)
+- clear out empty [column](axis)
+- delete [row](axis) [5](params)
+- remove [col](axis) [J](params)
+- clear [column](axis) [I](params)
+- get rid of [row](axis) [8](params)
+- delete [cols](axis) [A](params)
+- can you delete all empty [rows](axis)
+- can you delete [column]{"entity": "axis", "value": "columns"} [B](params)
+- remove all empty [columns](axis)
+- clear [row]{"entity": "axis", "value": "rows"} [2](params)
+- remove [row]{"entity": "axis", "value": "rows"} [3](params)
+- clear [column]{"entity": "axis", "value": "columns"} [c](params)
+- please delete [column]{"entity": "axis", "value": "columns"} [B](params)
+- remove all empty [columns](axis)
 
 ## intent:affirm
 - yes
@@ -152,3 +181,14 @@
 - are you a human?
 - am I talking to a bot?
 - am I talking to a human?
+
+## synonym:columns
+- column
+- col
+- cols
+- verticals
+
+## synonym:rows
+- row
+- sequence
+- horizontals
