@@ -1,0 +1,65 @@
+body{
+    color: white;
+    /*background-image: url(C:\Users\DELL\PycharmProjects\Excelency\LencyFrontEnd\Media\ChatBotBackground.jpg);*/
+    background-color: #778899;
+    /*background: rgba(119,136,153,0.2)*/
+    /*color: #FFFFFF;
+    background-color: #8C939D; */
+}
+#myForm {
+    position:fixed;
+    border: 3px solid #73AD21;
+    bottom: 0px;
+    margin-top: 5px;
+ /*   position: relative;
+    left: 2px;
+    */
+    left: 5.68px;
+  }
+
+/*#botName
+{
+    text-shadow: 0 0 3px "#000000", "#00000";
+    color: #73AD21;
+}*/
+#botName
+{
+    line-height: 5px;
+    font-size: 30px
+}
+/*.subtext
+{
+    line-height: 3px;
+    font-size: 13px;
+    margin-left:45px;
+}
+*/
+
+.img-spec {
+    border-radius: 50%;
+    border: 0.1px solid #ddd;
+    /*border-radius: 2px;*/
+    padding: 3px;
+    width: 50px;
+    margin-top: 2px;
+    margin-left: 2px;
+  }
+
+ /*input#send{
+    background: #ccc url('https://image.flaticon.com/icons/svg/60/60525.svg') no-repeat top left;
+}
+
+/*.img-spec
+{padding-left: 16px;
+    height: 16px;
+
+    max-width:5%;
+    margin-top:2px;
+    height:auto;
+  }
+*/
+/*head{
+    color: white;
+    background-color: black;
+}*/
+/*background-image: linear-gradient(-90deg,#43cea2 ,#185a9d);*/

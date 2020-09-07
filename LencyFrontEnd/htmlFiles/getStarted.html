@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>Excel Lency Assistant</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="../cssFiles/getStarted.css">
+
+    <!-- https://electronjs.org/docs/tutorial/security#csp-meta-tag -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';" />
+
+  </head>
+
+  <body style= "-webkit-app-region: drag">
+
+    <h1 id="name">Excel Lency Virtual Assistant</h1>
+
+    <h3>Welcome to the Next Gen of MS Excel</h3>
+
+
+  <button type="button" id='openChatBotButton' name="openChatBotButton">Get Started</button>
+
+    <!--
+      <form id="myForm">
+      <input type="text" id="message" name="message" placeholder="Type here" size= 28.5px>
+      <input type="submit" id="send" name="send" value=">">
+    </form>
+    -->
+
+     <!-- <script src="C:\Users\DELL\ElectronFolder\electron-api-demos\LencyBot\add.js"></script> -->
+      <script>
+        const electron = require('electron');
+        const {ipcRenderer} = electron;
+
+        const printIt = document.getElementById('openChatBotButton')
+
+        printIt.addEventListener('click', function (event)
+        {
+          const openChBotWin = "Creating ChatBot Window"
+          ipcRenderer.send('openChBotWinID', openChBotWin);
+
+        })
+        </script>
+
+  </body>
+</html>

@@ -1,0 +1,29 @@
+body{
+    text-align: center;
+    color: white;
+    background-color: grey;
+    /*background: rgba(119,136,153,0.2)*/
+    /*color: #FFFFFF;
+    background-color: #8C939D; */
+}
+
+/*#name{
+color:red;
+}*/
+
+#openChatBotButton{
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  /*margin-left: 70px;*/
+  margin-top: 90px;
+}
+
+#openChatBotButton:hover{
+background-color: orange;
+}
