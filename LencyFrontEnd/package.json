@@ -2,7 +2,7 @@
   "name": "LencyBot",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "./main.js",
   "scripts": {
     "start": "electron ."
   },
@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "electron": "10.1.0"
+    "electron": "^10.1.1"
   },
   "dependencies": {
     "bootstrap": "^4.5.2"
