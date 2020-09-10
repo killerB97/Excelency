@@ -30,7 +30,6 @@ function createWindow () {
   // Catch item:add
     ipcMain.on('openChBotWinID', function(e, openChBotWin){
     console.log(openChBotWin);
-    console.log("shi")
     ChBotWindow = new BrowserWindow({
     //titleBarStyle: "hiddenInset",
     transparent: true,
@@ -44,7 +43,6 @@ function createWindow () {
 
   })
   getStartedWindow.close()
-  console.log('GS')
   ChBotWindow.loadFile("./htmlFiles/chatBot.html");
   //ChBotWindow.webContents.openDevTools();
 });
@@ -54,7 +52,7 @@ getStartedWindow.loadFile("./htmlFiles/getStarted.html")
 
   ipcMain.on('MsgFromUserID', function(e, MsgFromUser){
   console.log(MsgFromUser);
-  var response= 'Ssup bruh?'
+  var response= 'Hey! I am Lency :)'
   /*
   Python functions
   get called here,
