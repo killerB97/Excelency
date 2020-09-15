@@ -41,8 +41,10 @@ function createWindow () {
       nodeIntegration: true
     }
 
+
   })
-  getStartedWindow.close()
+  getStartedWindow.close();
+  ChBotWindow.removeMenu();
   ChBotWindow.loadFile("./htmlFiles/chatBot.html");
   //ChBotWindow.webContents.openDevTools();
 });
@@ -52,7 +54,7 @@ getStartedWindow.loadFile("./htmlFiles/getStarted.html")
 
   ipcMain.on('MsgFromUserID', function(e, MsgFromUser){
   console.log(MsgFromUser);
-  var response= 'Hey! I am Lency :)'
+  var response= 'Hi there! I am Lency.'
   /*
   Python functions
   get called here,

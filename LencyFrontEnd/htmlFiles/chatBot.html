@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="../cssFiles/chatBot.css">
@@ -16,8 +17,6 @@
 
   </head>
 
-  <body style= "-webkit-app-region: drag">
-
  <!-- <div style="background-image:url('C:\Users\DELL\PycharmProjects\Excelency\LencyFrontEnd\Media\ChatBotBackground.jpg');">-->
      <!-- Optional JavaScript -->
      <!-- jQuery first, then Popper.js, then Bootstrap JS
@@ -25,9 +24,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     -->
-    <div>
-      <img id = image1" class="img-spec" src="../Media/LencyFace.jpeg">
-      <span id= "botName" style="text-shadow: 0 0 3px #000000">Lency Voice Bot</span>
+<body id="body">
+
+    <div class="header">
+      <img id = "image1" class="img-spec" src="../Media/LencyFace.jpeg">
+      <span id= "botName" style="text-shadow: 0 0 3px #000000; font-size:22px">Assistant for MS Excel</span>
       <!--<h3 id="botName"><span style="text-shadow: 0 0 3px #000000">Lency Voice Bot</span> </h3>
       <p class="subtext", style="padding-top: 0px;">Welcome to the Next Gen of MS Excel </p>-->
     </div>
@@ -59,19 +60,74 @@
         <img id="image1" class="img-spec" src=".../Media/LencyFace.jpeg" alt="botFace"/>
       </div>
       -->
-    </div>
       <!--<label for="message">Type here</label>-->
-      <form id="myForm">
+    <div class="messageClass" id="content">
+
+    <audio id="myAudio">
+    <source src="../Media/Output.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+
+    <audio id="WelcomeAudio">
+    <source src="../Media/Hello.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+    </audio>
+    </div>
+
+    <div class="formClass">
+      <button type="button" id='voiceButton' name="voiceRecButton" onclick="Recorder()"><i class="fa fa-microphone"></i></button>
+    <form id="myForm">
       <input type="text" id="message" name="message" placeholder="Type here" size= 28.5px >
       <input type="submit" id="send" name="send" value=">">
     </form>
+    </div>
 
 
      <!-- <script src="C:\Users\DELL\ElectronFolder\electron-api-demos\LencyBot\add.js"></script> -->
 
       <script>
+      var contentDiv=document.getElementById("content");
+      var bod=document.getElementById("body");
+      console.log(bod.height);
+      window.scrollTo(0,bod.scrollHeight);
+      var rec=0
+      function Recorder(){
+      console.log(rec);
+      if (rec==0){
+         let vb=document.getElementById("voiceButton")
+        vb.style.color='red';
+        rec=1;
+        }
+      else {
+        let vb=document.getElementById("voiceButton")
+        vb.style.color='black';
+        rec=0;
+        document.getElementById('message').value = "My Text Input";
+        document.getElementById('message').focus();
+        }
+      };
+
        const electron = require('electron');
        const {ipcRenderer} = electron;
+
+      //Welcome Message on Opening Window
+       var y = document.getElementById("WelcomeAudio");
+       y.play();
+       setTimeout(showWelcomeMessage, 1500);
+       function showWelcomeMessage() {
+       const itemText3 = document.createTextNode('Hi there! I am Lency.');
+       let div3 = document.createElement('div');
+       div3.id = 'content3';
+       div3.class = 'container darker3';
+       let img3 = document.createElement('img');
+       img3.src='../Media/LencyFace.jpeg';
+       img3.setAttribute("style", "border-radius: 50%; float: left; max-width: 35px; width: 100%; margin-right: 20px;");
+       div3.appendChild(img3)
+       div3.appendChild(itemText3);
+       div3.setAttribute("style", "float:left; max-width: 275px; width: 100%; border: 2px solid #dedede; background-color: #C0C0C0; color: #000000; border-radius: 5px; padding: 10px; margin: 10px 0;");
+       contentDiv.appendChild(div3);
+       };
+
 
 
        const FormEvent = document.getElementById('myForm')
@@ -95,15 +151,19 @@
             div.appendChild(img)
             div.appendChild(itemText);
 
-            div.setAttribute("style", "color: #000000; border-color: #ccc; background-color: #ddd; border: 2px solid #dedede; border-radius: 5px; padding: 10px;");
-            document.body.appendChild(div);
+            div.setAttribute("style", "float:right; max-width: 275px; width: 100%; color: #000000; border-color: #ccc; background-color: #00FF7F; border: 2px solid #dedede; border-radius: 5px; padding: 10px;");
+            contentDiv.appendChild(div);
 
 
             document.getElementById("myForm").reset();
+            window.scrollTo(0,bod.scrollHeight);
             })
        ipcRenderer.on('response', function(e, response)
        {
-
+            var x = document.getElementById("myAudio");
+            x.play();
+            setTimeout(showMessage, 1000);
+            function showMessage() {
             const itemText2 = document.createTextNode(response);
             let div2 = document.createElement('div');
             div2.id = 'content2';
@@ -116,8 +176,11 @@
             div2.appendChild(img2)
             div2.appendChild(itemText2);
 
-            div2.setAttribute("style", "border: 2px solid #dedede; background-color: #f1f1f1; color: #000000; border-radius: 5px; padding: 10px; margin: 10px 0;");
-            document.body.appendChild(div2);
+            div2.setAttribute("style", "float:left; max-width: 275px; width: 100%; border: 2px solid #dedede; background-color: #C0C0C0; color: #000000; border-radius: 5px; padding: 10px; margin: 10px 0;");
+           contentDiv.appendChild(div2);
+            window.scrollTo(0,bod.scrollHeight);
+            };
+
        })
 
 
