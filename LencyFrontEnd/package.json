@@ -14,7 +14,6 @@
   },
   "dependencies": {
     "bootstrap": "^4.5.2",
-    "needle": "^2.5.2",
-    "request": "^2.88.2"
+    "custom-electron-titlebar": "^3.2.4"
   }
 }
