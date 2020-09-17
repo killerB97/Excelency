@@ -11,7 +11,7 @@ def colNameToNum(name):
 
 wbook = xw.Book('test.xlsx').sheets[0]
 #columns = tracker.get_slot('parameters')
-columns = ['B', 'C']
+columns = ['A', 'B']
 pd_cols = columns[:]
 for i,n in enumerate(columns):
     pd_cols[i] = colNameToNum(n) 
@@ -20,3 +20,23 @@ df = pd.DataFrame(sheet1)
 wbook.range(columns[0]+'1').options(index=False, header=False, transpose=True).value  = df[[pd_cols[0], pd_cols[1]]].apply(lambda row: ' '.join(row.values.astype(str)), axis=1).values 
 wbook.range(columns[1]+':'+columns[1]).api.clear_contents()
 #dispatcher.utter_message(text="Sure I'll delete all empty columns")
+
+
+  var message = JSON.stringify({
+    "message": MsgFromUser
+});
+
+var options = {
+  uri: 'http://localhost:5005/webhooks/rest/webhook',
+  method: 'POST',
+  headers: {'content-type' : 'application/json'},
+  body: message
+};
+
+request(options, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log()
+    ChBotWindow.webContents.send('response', JSON.parse(body)[0]['text']);
+     // Print the shortened url.
+  }
+});

@@ -18,48 +18,48 @@
 - See you later
 
 ## intent:add
-- Can you please add the two columns [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} and store it in [C](destination)
-- Add the columns [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"} please and put it in [K](destination)
-- Please sum column [E]{"entity": "parameters", "role": "first"} and column [K]{"entity": "parameters", "role": "second"} and place it in [F](destination)
-- Give me the sum of columns [F]{"entity": "parameters", "role": "first"} and [I]{"entity": "parameters", "role": "second"} and add to column [T](destination)
-- sum column [T]{"entity": "parameters", "role": "first"} and [G]{"entity": "parameters", "role": "second"} to [G](destination)
-- find the total of column [A]{"entity": "parameters", "role": "first"} and column [B]{"entity": "parameters", "role": "second"} and shift to [N](destination)
-- Find the sum of [A]{"entity": "parameters", "role": "second"} and [C]{"entity": "parameters", "role": "second"} as well as store in [R](destination)
-- add up column [F]{"entity": "parameters", "role": "first"} and [I]{"entity": "parameters", "role": "second"} and send to column [D](destination)
-- Please find the addition of [D]{"entity": "parameters", "role": "first"} and [Y]{"entity": "parameters", "role": "second"} to column [S](destination)
-- Add [R]{"entity": "parameters", "role": "first"} and [J]{"entity": "parameters", "role": "second"} and add to column [I](destination)
-- Can you please sum column [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} to [D](destination)
+- Can you please add the two columns [A](parameters) and [B](parameters) and store it in [C](destination)
+- Add the columns [B](parameters) and [C](parameters) please and put it in [K](destination)
+- Please sum column [E](parameters) and column [K](parameters) and place it in [F](destination)
+- Give me the sum of columns [F](parameters) and [I](parameters) and add to column [T](destination)
+- sum column [T](parameters) and [G](parameters) to [G](destination)
+- find the total of column [A](parameters) and column [B](parameters) and shift to [N](destination)
+- Find the sum of [A](parameters) and [C](parameters) as well as store in [R](destination)
+- add up column [F](parameters) and [I](parameters) and send to column [D](destination)
+- Please find the addition of [D](parameters) and [Y](parameters) to column [S](destination)
+- Add [R](parameters) and [J](parameters) and add to column [I](destination)
+- Can you please sum column [A](parameters) and [B](parameters) to [D](destination)
 - Can you again add the columns and put in [H](destination)
-- can you please add them again to [I]{"entity": "destination", "role": "second"}
-- Can you add [A]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
-- yes please add to [J]{"entity": "destination", "role": "first"}
-- can you please add [G]{"entity": "parameters", "role": "first"} to [K](destination)
-- can you please add [G]{"entity": "parameters", "role": "second"} and [F]{"entity": "parameters", "role": "first"} to [K](destination)
-- Can you add [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"}
+- can you please add them again to [I](destination)
+- Can you add [A](parameters) and [C](parameters)
+- yes please add to [J](destination)
+- can you please add [G](parameters) to [K](destination)
+- can you please add [G](parameters) and [F](parameters) to [K](destination)
+- Can you add [A](parameters) and [B](parameters)
 - Yes please add to [K](destination)
 - Can you add them again to [D](destination) instead now
-- Can you add column [B]{"entity": "parameters", "role": "first"} to [C](destination)
-- Yes can you add [B]{"entity": "parameters", "role": "second"} and [A]{"entity": "parameters", "role": "first"} to [C](destination)
+- Can you add column [B](parameters) to [C](destination)
+- Yes can you add [B](parameters) and [A](parameters) to [C](destination)
 - can you add and store to column [H](destination)
-- Oh sorry can you add [F]{"entity": "parameters", "role": "first"} and [G]{"entity": "parameters", "role": "second"} to [H](destination)
+- Oh sorry can you add [F](parameters) and [G](parameters) to [H](destination)
 - can you add them again to [E](destination) instead
-- Can you add [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} to [D](destination)
-- Can you add them again to [I]{"entity": "destination", "role": "second"} instead
+- Can you add [A](parameters) and [B](parameters) to [D](destination)
+- Can you add them again to [I](destination) instead
 - can you add them again to [K](destination)
 - can you add the columns to [E](destination)
-- My bad please add the coulms [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} to [E](destination)
-- Can you please add [F]{"entity": "parameters", "role": "first"} and [G]{"entity": "parameters", "role": "second"} please
+- My bad please add the coulms [A](parameters) and [B](parameters) to [E](destination)
+- Can you please add [F](parameters) and [G](parameters) please
 - Yes please add them to [K](destination)
-- sum up [G]{"entity": "parameters", "role": "first"} and [K]{"entity": "parameters", "role": "second"}
+- sum up [G](parameters) and [K](parameters)
 - Oh yes put it in [H](destination)
-- total column [F]{"entity": "parameters", "role": "first"} please
-- sum up [F]{"entity": "parameters", "role": "first"} and [G]{"entity": "parameters", "role": "second"}
+- total column [F](parameters) please
+- sum up [F](parameters) and [G](parameters)
 - total them and put in [C](destination)
-- sum up [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} and store in [C](destination)
-- Can you add column [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} and store it in [C](destination)
-- can you add [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} to [C](destination)
+- sum up [A](parameters) and [B](parameters) and store in [C](destination)
+- Can you add column [A](parameters) and [B](parameters) and store it in [C](destination)
+- can you add [A](parameters) and [B](parameters) to [C](destination)
 - can you add them again to [F](destination) instead
-- can you add column [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"} to [C](destination)
+- can you add column [A](parameters) and [B](parameters) to [C](destination)
 
 ## intent:sort
 - can you sort column [B](parameters) in [ascending](pointer) order
@@ -83,25 +83,26 @@
 - [descending](pointer) order
 - please arrange column [F](parameters) in [ascending](pointer) order
 - can you srt the column again in [descending](pointer) order
+- also sort [C](destination)
 
 ## intent:insert
-- Can you insert a column in between [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
-- Please add a column in between [G]{"entity": "parameters", "role": "first"} and [H]{"entity": "parameters", "role": "second"}
-- insert column between [D]{"entity": "parameters", "role": "first"} and [E]{"entity": "parameters", "role": "second"} please
-- insert between [F]{"entity": "parameters", "role": "first"} and [G]{"entity": "parameters", "role": "second"}
-- add between [M]{"entity": "parameters", "role": "first"} and [N]{"entity": "parameters", "role": "second"}
-- place column in between [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"}
-- please put column in between [S]{"entity": "parameters", "role": "first"} and [T]{"entity": "parameters", "role": "second"}
-- Can you insert column between [A]{"entity": "parameters", "role": "first"} and [B]{"entity": "parameters", "role": "second"}
-- Can you add column between [D]{"entity": "parameters", "role": "first"}
-- Oh sorry between [D]{"entity": "parameters", "role": "first"} and [E]{"entity": "parameters", "role": "second"}
+- Can you insert a column in between [B](parameters) and [C](parameters)
+- Please add a column in between [G](parameters) and [H](parameters)
+- insert column between [D](parameters) and [E](parameters) please
+- insert between [F](parameters) and [G](parameters)
+- add between [M](parameters) and [N](parameters)
+- place column in between [A](parameters) and [B](parameters)
+- please put column in between [S](parameters) and [T](parameters)
+- Can you insert column between [A](parameters) and [B](parameters)
+- Can you add column between [D](parameters)
+- Oh sorry between [D](parameters) and [E](parameters)
 - Can you put a column
-- Yes please put it in between [I]{"entity": "parameters", "role": "second"} and [J]{"entity": "parameters", "role": "second"}
-- can you insert a column in between [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
-- insert column between [E]{"entity": "parameters", "role": "first"} and [F]{"entity": "parameters", "role": "first"}
-- please insert column between [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
+- Yes please put it in between [I](parameters) and [J](parameters)
+- can you insert a column in between [B](parameters) and [C](parameters)
+- insert column between [E](parameters) and [F](parameters)
+- please insert column between [B](parameters) and [C](parameters)
 - insert a column on [c](destination)
-- insert a column in between [B]{"entity": "parameters", "role": "first"} and [C]{"entity": "parameters", "role": "second"}
+- insert a column in between [B](parameters) and [C](parameters)
 
 ## intent:delete
 - delete all empty [rows](axis)
@@ -126,7 +127,14 @@
 - remove [row]{"entity": "axis", "value": "rows"} [3](params)
 - clear [column]{"entity": "axis", "value": "columns"} [c](params)
 - please delete [column]{"entity": "axis", "value": "columns"} [B](params)
-- remove all empty [columns](axis)
+
+## intent:merge
+- please merge columns [c](params) and [d] {"entity":"params", "role": "second"}
+- can you merge columns [A](params) and [e] {"entity":"params", "role": "second"}
+- merge [F](params) and [J] {"entity":"params", "role": "second"}
+- please combine [S](params) and [t] {"entity":"params", "role": "second"}
+- combine cols [k](params) and [d] {"entity":"params", "role": "second"}
+- merge the columns [G](params) and [H] {"entity":"params", "role": "second"}
 
 ## intent:affirm
 - yes

@@ -1,5 +1,9 @@
-const { app, BrowserWindow, Menu, ipcMain} = require('electron')
-const shell = require('electron').shell
+const { app, BrowserWindow, Menu, ipcMain} = require('electron');
+const { net } = require('electron');
+const shell = require('electron').shell;
+var needle = require('needle');
+var request = require('request');
+
 
 let getStartedWindow
 let ChBotWindow
@@ -21,8 +25,8 @@ function createWindow () {
     height: 350,
     //frame:false,
     webPreferences: {
-      nodeIntegration: true
-      //enableRemoteModule: true
+      nodeIntegration: true,
+      enableRemoteModule: true
      }
      })
 
@@ -38,7 +42,10 @@ function createWindow () {
     height: 450,
     //frame:false,
     webPreferences: {
-      nodeIntegration: true
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      webSecurity: false,
+      allowRunningInsecureContent: true
     }
 
   })
@@ -52,17 +59,48 @@ getStartedWindow.loadFile("./htmlFiles/getStarted.html")
 
   ipcMain.on('MsgFromUserID', function(e, MsgFromUser){
   console.log(MsgFromUser);
-  var response= 'Hey! I am Lency :)'
-  /*
-  Python functions
-  get called here,
-  takes input i.e. MsgFromUser,
-  performs the task
-  and
-  stores Rasa's response in
-  var response
-  */
-  ChBotWindow.webContents.send('response', response);
+  var message = JSON.stringify({
+    "message": MsgFromUser
+});
+
+var options = {
+  uri: 'http://localhost:5005/webhooks/rest/webhook',
+  method: 'POST',
+  headers: {'content-type' : 'application/json'},
+  body: message
+};
+
+request(options, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    console.log()
+    ChBotWindow.webContents.send('response', JSON.parse(body)[0]['text']);
+     // Print the shortened url.
+  }
+});
+
+  /*const request = net.request({
+  method: 'POST',
+  protocol: 'http:',
+  hostname: 'localhost',
+  port:5005,
+  path: '/webhooks/rest/webhook',
+  headers: {
+    "Content-Type": "application/json"
+}
+  })
+
+  request.on('response', (response) => {
+    console.log(message)
+    console.log(`STATUS: ${response.statusCode}`)
+    console.log(`HEADERS: ${response.body}`)
+  })
+
+  
+  request.write(message);
+  request.end();
+*/
+
+  //ChBotWindow.webContents.send('response', reply);
   // win.webContents.send('item:add', item);
   // addWindow.close();
   // Still have a reference to addWindow in memory. Need to reclaim memory (Grabage collection)

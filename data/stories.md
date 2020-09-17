@@ -312,7 +312,8 @@
   - utter_greet
 * delete
   -  action_delete
-## interactive_story_1
+
+## delete four way
 * delete{"axis": "rows"}
     - slot{"axis": "rows"}
     - action_delete
@@ -332,7 +333,7 @@
     - action_delete
     - slot{"params": null}
 
-## interactive_story_1
+## delete mixed path
 * greet
     - utter_greet
 * add{"parameters": "B", "destination": "C"}
@@ -364,3 +365,9 @@
     - slot{"axis": "columns"}
     - action_delete
     - slot{"params": null}
+
+## merge happy path
+* merge
+  - utter_ask_symbol
+* merge
+  - action_merge_columns

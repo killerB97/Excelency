@@ -168,13 +168,13 @@ class ActionMergeColumns(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
         wbook = xw.Book('test.xlsx').sheets[0]
-        columns = tracker.get_slot('parameters')
+        columns = tracker.get_slot('params')
         delimiter = tracker.get_slot('symbol')
         if len(delimiter)==0:
             delimiter=' '
         pd_cols = columns[:]
         for i,n in enumerate(columns):
-            pd_cols[i] = colNameToNum(n) 
+            pd_cols[i] = self.colNameToNum(n) 
         sheet1 = wbook.used_range.value
         df = pd.DataFrame(sheet1)
         wbook.range(columns[0]+'1').options(index=False, header=False, transpose=True).value  = df[[pd_cols[0], pd_cols[1]]].apply(lambda row: delimiter.join(row.values.astype(str)), axis=1).values 
