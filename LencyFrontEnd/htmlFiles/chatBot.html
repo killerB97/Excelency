@@ -64,7 +64,7 @@
     <div class="messageClass" id="content">
 
     <audio id="myAudio">
-    <source src="../Media/Output.mp3" type="audio/mpeg">
+    <!--<source src="/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3" type="audio/mpeg">-->
     Your browser does not support the audio element.
     </audio>
 
@@ -109,7 +109,7 @@
 
        const electron = require('electron');
        const {ipcRenderer} = electron;
-
+       const gTTS = require('gtts'); 
       //Welcome Message on Opening Window
        var y = document.getElementById("WelcomeAudio");
        y.play();
@@ -158,10 +158,19 @@
             document.getElementById("myForm").reset();
             window.scrollTo(0,bod.scrollHeight);
             })
+
        ipcRenderer.on('response', function(e, response)
        {
-            var x = document.getElementById("myAudio");
-            x.play();
+            var gtts = new gTTS(response, 'en');   
+            gtts.save('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function (err, result){ 
+            if(err) { throw new Error(err); }});
+            //let x = document.createElement('audio');
+            //var x = document.getElementById("myAudio");
+            //x.src="/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3";
+            //x.type="audio/mpeg";
+            //bod.appendChild(x);
+            //x.load();
+            //x.play();});
             setTimeout(showMessage, 1000);
             function showMessage() {
             const itemText2 = document.createTextNode(response);

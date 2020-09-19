@@ -15,6 +15,7 @@ from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 
 
+
 class ActionAddColumns(Action):
 
     def name(self) -> Text:
@@ -41,7 +42,7 @@ class ActionAddColumns(Action):
         sheet1 = wbook.used_range.value
         df = pd.DataFrame(sheet1)
         wbook.range(dest+'1').options(index=False, header=False, transpose=True).value = df[pd_cols[0]].values+df[pd_cols[1]].values
-        dispatcher.utter_message(text="Sure I'll sum the columns {} and {} for you and store it in column {}".format(columns[0],columns[1], dest))
+        dispatcher.utter_message(text="Sure I have added the columns {} and {} for you and stored it in column {}".format(columns[0],columns[1], dest))
 
         return []
 
@@ -80,7 +81,7 @@ class ActionSortColumns(Action):
         df = pd.DataFrame(sheet1)
         df = df.sort_values(by=pd_cols[0], ascending=flag)
         wbook.range(columns[0]+'1').options(index=False, header=False).value = df[pd_cols[0]]
-        dispatcher.utter_message(text="Sure I'll sort the column {}".format(columns[0]))
+        dispatcher.utter_message(text="Sure I have sorted the column {}".format(columns[0]))
 
         return []
 
@@ -109,7 +110,7 @@ class ActionInsertColumns(Action):
         sheet1 = wbook.used_range.value
         df = pd.DataFrame(sheet1)
         wbook.api.columns[pd_cols[1]+1].insert_into_range()
-        dispatcher.utter_message(text="Sure I'll insert a column in between columns {} and {}".format(columns[0],columns[1]))
+        dispatcher.utter_message(text="Sure I have inserted a column in between columns {} and {}".format(columns[0],columns[1]))
 
         return []
 
@@ -131,21 +132,21 @@ class ActionDeleteColumns(Action):
             wbook.clear_contents()
             df.dropna(how='all', inplace=True)
             wbook.range('A1').options(index=False, header=False,).value = df.values
-            dispatcher.utter_message(text="Sure I'll delete all empty rows")
+            dispatcher.utter_message(text="Sure I have deleted all empty rows")
         
         elif axis.lower() == 'columns' and param==None:
             wbook.clear_contents()
             df.dropna(axis=1, how='all', inplace=True)
             wbook.range('A1').options(index=False, header=False).value = df.values
-            dispatcher.utter_message(text="Sure I'll delete all empty columns")
+            dispatcher.utter_message(text="Sure I have deleted all empty columns")
         
         elif axis.lower() == 'columns':
             wbook.range(param[0]+':'+param[0]).api.delete()
-            dispatcher.utter_message(text="Sure I'll delete column {}".format(param[0]))
+            dispatcher.utter_message(text="Sure I have deleted column {}".format(param[0]))
 
         elif axis.lower() == 'rows':
             wbook.range(param[0]+':'+param[0]).api.delete()
-            dispatcher.utter_message(text="Sure I'll delete row {}".format(param[0]))
+            dispatcher.utter_message(text="Sure I have deleted row {}".format(param[0]))
 
         return [SlotSet("params", None)]
 
@@ -179,6 +180,6 @@ class ActionMergeColumns(Action):
         df = pd.DataFrame(sheet1)
         wbook.range(columns[0]+'1').options(index=False, header=False, transpose=True).value  = df[[pd_cols[0], pd_cols[1]]].apply(lambda row: delimiter.join(row.values.astype(str)), axis=1).values 
         wbook.range(columns[1]+':'+columns[1]).api.clear_contents()
-        dispatcher.utter_message(text="Sure I'll merge columns {} and {}".format(columns[0],columns[1]))
+        dispatcher.utter_message(text="Sure I have merged columns {} and {}".format(columns[0],columns[1]))
 
         return []

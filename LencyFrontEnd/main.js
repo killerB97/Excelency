@@ -1,6 +1,9 @@
 const { app, BrowserWindow, Menu, ipcMain} = require('electron');
-const { net } = require('electron');
 const shell = require('electron').shell;
+var request = require('request');
+const gTTS = require('gtts'); 
+var player = require('play-sound')(opts = {});
+      
 
 
 let getStartedWindow
@@ -59,17 +62,30 @@ getStartedWindow.loadFile("./htmlFiles/getStarted.html")
 
   ipcMain.on('MsgFromUserID', function(e, MsgFromUser){
   console.log(MsgFromUser);
-  var response= 'Hi there! I am Lency.'
-  /*
-  Python functions
-  get called here,
-  takes input i.e. MsgFromUser,
-  performs the task
-  and
-  stores Rasa's response in
-  var response
-  */
-  ChBotWindow.webContents.send('response', response);
+  var message = JSON.stringify({
+    "message": MsgFromUser
+});
+
+var options = {
+  uri: 'http://localhost:5005/webhooks/rest/webhook',
+  method: 'POST',
+  headers: {'content-type' : 'application/json'},
+  body: message
+};
+
+request(options, function (error, response, body) {
+  if (!error && response.statusCode == 200) {
+    var gtts = new gTTS(JSON.parse(body)[0]['text'], 'en');   
+    gtts.save('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function (err, result){ 
+    if(err) { throw new Error(err); } 
+    player.play('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function(err){
+      if (err) throw err
+    });  });
+    ChBotWindow.webContents.send('response', JSON.parse(body)[0]['text']);
+
+     // Print the shortened url.
+    }
+});
   // win.webContents.send('item:add', item);
   // addWindow.close();
   // Still have a reference to addWindow in memory. Need to reclaim memory (Grabage collection)
