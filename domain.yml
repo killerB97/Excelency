@@ -21,6 +21,7 @@ entities:
 - parameters
 - params
 - pointer
+
 slots:
   axis:
     type: text
@@ -34,6 +35,7 @@ slots:
     type: text
   symbol:
     type: text
+
 responses:
   utter_ask_columns:
   - text: Can you specify the input columns?
@@ -57,7 +59,7 @@ responses:
   - text: Great, carry on!
   - text: That's good to hear, What else can I help you with?
   utter_iamabot:
-  - text: I am a Lency, If you have a problem with the name take it up with Shourya
+  - text: I am Lency, If you have a problem with the name take it up with Shourya
       Shukla
 actions:
 - action_add_columns

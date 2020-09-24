@@ -36,34 +36,66 @@ overflow-y:auto;
 .formClass{
 float:left;
 position:fixed;
- bottom: 3px;
+ bottom: 6px;
  margin-top: 5px;
  left: 1.5px;
+}
+
+input.message:focus, input:focus{
+    outline: none;
+}
+button.send:focus, button:focus{
+    outline: none;
+}
+button.voiceButton:focus, button:focus{
+    outline: none;
 }
 
 
 #voiceButton {
 border-radius: 50%;
 float:left;
-margin-left:7px;
+margin-left:8.5px;
 display:inline-block;
-margin-right:1px;
-width:30px;
-height:30px;
-background-color:#B0B0B0;
+margin-right:2px;
+width:35px;
+height:35px;
+background-image: url('/Users/raji/Chatbot/LencyFrontEnd/Media/mic.png');
+background-repeat: no-repeat;
+background-color:transparent; 
+background-size: contain;
+border-color:transparent;
 
 }
+
 #myForm {
-    padding-left : 2.5px;
+    padding-left : 1px;
     float:left;
     display:inline-block;
   }
 #message{
-width:200px;}
+width:200px;
+border-radius:20px;
+border-width: 1px;
+border-color: black;
+padding-left: 10px;
+padding-top: 5px;
+padding-bottom: 5px;
+scroll-padding-right: 5px;
+-webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+-moz-box-sizing: border-box;    /* Firefox, other Gecko */
+box-sizing: border-box; 
+}
 
 #send{
-background-color: #505050;
-color:white;
+width:32px;
+height:32px;
+border-radius: 25%;
+background-image: url('/Users/raji/Chatbot/LencyFrontEnd/Media/paper-plane.png');
+background-repeat: no-repeat;
+background-color:transparent; 
+background-size: contain;
+border-color:transparent;
 }
 
 /*
@@ -104,6 +136,8 @@ color:white;
     margin-left: 2px;
 
   }
+
+
 
  /*input#send{
     background: #ccc url('https://image.flaticon.com/icons/svg/60/60525.svg') no-repeat top left;

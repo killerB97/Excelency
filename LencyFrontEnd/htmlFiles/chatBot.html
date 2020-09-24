@@ -75,10 +75,12 @@
     </div>
 
     <div class="formClass">
-      <button type="button" id='voiceButton' name="voiceRecButton" onclick="Recorder()"><i class="fa fa-microphone"></i></button>
+      <button type="button" id='voiceButton' name="voiceRecButton" onclick="Recorder()"></button>
     <form id="myForm">
       <input type="text" id="message" name="message" placeholder="Type here" size= 28.5px >
-      <input type="submit" id="send" name="send" value=">">
+      <!-- <input type="submit" id="send" name="send" > -->
+      <button type="submit", id="send" name="send"><img>
+        </button>
     </form>
     </div>
 
@@ -88,22 +90,34 @@
       <script>
       var contentDiv=document.getElementById("content");
       var bod=document.getElementById("body");
+      var request = require('request');
       console.log(bod.height);
       window.scrollTo(0,bod.scrollHeight);
       var rec=0
       function Recorder(){
       console.log(rec);
       if (rec==0){
-         let vb=document.getElementById("voiceButton")
-        vb.style.color='red';
-        rec=1;
+        let vb=document.getElementById("voiceButton")
+        vb.style.backgroundColor='#FECEAB';
+        var options = {
+        uri: 'http://localhost:5000/speech',
+        method: 'POST'
+      };
+      request(options, function (error, response, body) {
+      if (!error && response.statusCode == 200) {
+        console.log(JSON.parse(body)['stt'])
+        document.getElementById('message').value = JSON.parse(body)['stt'];
+        document.getElementById('message').focus();
+        let vb=document.getElementById("voiceButton")
+        vb.style.backgroundColor='transparent';
+      }
+      });
+        //rec=1;
         }
       else {
         let vb=document.getElementById("voiceButton")
         vb.style.color='black';
         rec=0;
-        document.getElementById('message').value = "My Text Input";
-        document.getElementById('message').focus();
         }
       };
 
