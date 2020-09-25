@@ -61,6 +61,8 @@ responses:
   utter_iamabot:
   - text: I am Lency, If you have a problem with the name take it up with Shourya
       Shukla
+  utter_default:
+  - text: Sorry I didn't understand. Please try again...
 actions:
 - action_add_columns
 - action_delete
