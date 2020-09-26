@@ -374,3 +374,100 @@
 
 ## fallback
 - action_default_fallback
+
+## new mixed challenge
+* bot_challenge
+    - utter_iamabot
+* add{"parameters": "b", "destination": "C"}
+    - slot{"destination": "C"}
+    - slot{"parameters": ["A", "b"]}
+    - action_add_columns
+* delete{"axis": "columns", "params": "D"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["D"]}
+    - action_delete
+    - slot{"params": null}
+* merge{"params": "D"}
+    - slot{"params": ["C", "D"]}
+    - utter_ask_symbol
+* merge
+    - action_merge_columns
+* add{"parameters": "C", "destination": "G"}
+    - slot{"destination": "G"}
+    - slot{"parameters": ["B", "C"]}
+    - action_add_columns
+* delete{"axis": "columns", "params": "G"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["G"]}
+    - action_delete
+    - slot{"params": null}
+* grateful
+    - utter_happy
+
+## interactive_story_1
+* bot_challenge
+    - utter_iamabot
+* add{"parameters": "B", "destination": "G"}
+    - slot{"destination": "G"}
+    - slot{"parameters": ["a", "B"]}
+    - action_add_columns
+* add{"parameters": "b", "destination": "G"}
+    - slot{"destination": "G"}
+    - slot{"parameters": ["a", "b"]}
+    - action_add_columns
+* sort{"parameters": "g"}
+    - slot{"parameters": ["g"]}
+    - utter_ask_pointer
+* sort{"pointer": "descending"}
+    - slot{"pointer": "descending"}
+    - action_sort_columns
+
+## interactive_story_2
+* bot_challenge
+    - utter_iamabot
+* merge{"m_params": "e"}
+    - slot{"m_params": ["D", "e"]}
+    - utter_ask_symbol
+* merge{"symbol": ":"}
+    - slot{"symbol": ":"}
+    - action_merge_columns
+* delete{"axis": "columns"}
+    - slot{"axis": "columns"}
+    - action_delete
+    - slot{"params": null}
+* delete{"axis": "columns", "params": "C"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["C"]}
+    - action_delete
+    - slot{"params": null}
+* add{"parameters": "B", "destination": "F"}
+    - slot{"destination": "F"}
+    - slot{"parameters": ["A", "B"]}
+    - action_add_columns
+* sort{"parameters": "F"}
+    - slot{"parameters": ["F"]}
+    - utter_ask_pointer
+* sort{"pointer": "ascending"}
+    - slot{"pointer": "ascending"}
+    - action_sort_columns
+* delete{"axis": "columns", "params": "f"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["f"]}
+    - action_delete
+    - slot{"params": null}
+* grateful
+    - utter_happy
+* add{"parameters": "B", "destination": "C"}
+    - slot{"destination": "C"}
+    - slot{"parameters": ["A", "B"]}
+    - action_add_columns
+* add{"parameters": "c"}
+    - slot{"parameters": ["B", "c"]}
+    - utter_ask_destination
+* add{"destination": "G"}
+    - slot{"destination": "G"}
+    - action_add_columns
+
+## undo happy path
+* undo
+    - action_undo

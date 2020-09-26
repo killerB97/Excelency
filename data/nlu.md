@@ -60,6 +60,15 @@
 - can you add [A](parameters) and [B](parameters) to [C](destination)
 - can you add them again to [F](destination) instead
 - can you add column [A](parameters) and [B](parameters) to [C](destination)
+- can you add [A](parameters) and [b](parameters) to [C](destination)
+- add column [B](parameters) and column [C](parameters) to [G](destination)
+- add column [a](parameters) and [B](parameters) to [G](destination)
+- add [a](parameters) and [b](parameters) to [G](destination)
+- total columns [A](parameters) and [B](parameters) and store in [F](destination)
+- sum up [A](parameters) and [B](parameters) to [C](parameters) please
+- add [A](parameters) and [B](parameters) to [C](destination) please
+- sum up [B](parameters) and [c](parameters)
+- [G](destination)
 
 ## intent:sort
 - can you sort column [B](parameters) in [ascending](pointer) order
@@ -84,6 +93,9 @@
 - please arrange column [F](parameters) in [ascending](pointer) order
 - can you srt the column again in [descending](pointer) order
 - also sort [C](destination)
+- short column [g](parameters)
+- short [F](parameters)
+- [ascending](pointer)
 
 ## intent:insert
 - Can you insert a column in between [B](parameters) and [C](parameters)
@@ -127,14 +139,34 @@
 - remove [row]{"entity": "axis", "value": "rows"} [3](params)
 - clear [column]{"entity": "axis", "value": "columns"} [c](params)
 - please delete [column]{"entity": "axis", "value": "columns"} [B](params)
+- can you delete [column]{"entity": "axis", "value": "columns"} [D](params)
+- delete [column]{"entity": "axis", "value": "columns"} [G](params) please
+- delete all empty [columns](axis)
+- clear [col]{"entity": "axis", "value": "columns"} [C](params)
+- delete [column]{"entity": "axis", "value": "columns"} [f](params)
 
 ## intent:merge
-- please merge columns [c](params) and [d] {"entity":"params", "role": "second"}
-- can you merge columns [A](params) and [e] {"entity":"params", "role": "second"}
-- merge [F](params) and [J] {"entity":"params", "role": "second"}
-- please combine [S](params) and [t] {"entity":"params", "role": "second"}
-- combine cols [k](params) and [d] {"entity":"params", "role": "second"}
-- merge the columns [G](params) and [H] {"entity":"params", "role": "second"}
+- please merge columns [c](m_params) and [d] {"entity":"m_params", "role": "second"}
+- can you merge columns [A](m_params) and [e] {"entity":"m_params", "role": "second"}
+- merge [F](m_params) and [J] {"entity":"m_params", "role": "second"}
+- please combine [S](m_params) and [t] {"entity":"m_params", "role": "second"}
+- combine cols [k](m_params) and [d] {"entity":"m_params", "role": "second"}
+- merge the columns [G](m_params) and [H] {"entity":"m_params", "role": "second"}
+- can you merge column [C](m_params) and [D]{"entity": "m_params", "role": "second"}
+- [+](symbol)
+- [-](symbol)
+- [/](symbol)
+- merge column [D](m_params) and [e]{"entity": "m_params", "role": "second"}
+- [:](symbol)
+
+## intent:undo
+- can you please undo the last function
+- please undo
+- undo
+- revert back to the previous state
+- revert the changes
+- undo the change
+
 
 ## intent:affirm
 - yes
@@ -171,6 +203,8 @@
 - Thanks a lot
 - you are awesome
 - Thank you that was great
+- thank you
+- thanks a lot
 
 ## intent:mood_unhappy
 - sad
@@ -189,6 +223,8 @@
 - are you a human?
 - am I talking to a bot?
 - am I talking to a human?
+- who are you
+- who is this
 
 ## synonym:columns
 - column

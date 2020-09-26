@@ -1,8 +1,9 @@
-const { app, BrowserWindow, Menu, ipcMain} = require('electron');
+const { app, BrowserWindow, Menu, ipcMain, ipcRenderer} = require('electron');
 const shell = require('electron').shell;
 var request = require('request');
 const gTTS = require('gtts'); 
 var player = require('play-sound')(opts = {});
+const { dialog } = require('electron');
       
 
 
@@ -31,13 +32,13 @@ function createWindow () {
      }
      })
 
-
+     //getStartedWindow.webContents.openDevTools();
   // Catch item:add
     ipcMain.on('openChBotWinID', function(e, openChBotWin){
     console.log(openChBotWin);
     ChBotWindow = new BrowserWindow({
     //titleBarStyle: "hiddenInset",
-    transparent: true,
+    transparent: false,
     resizable: false,
     width: 300,
     height: 450,
@@ -51,6 +52,7 @@ function createWindow () {
 
 
   })
+  
   getStartedWindow.close();
   ChBotWindow.removeMenu();
   ChBotWindow.loadFile("./htmlFiles/chatBot.html");
@@ -119,9 +121,26 @@ request(options, function (error, response, body) {
    //getStartedWindow.webContents.openDevTools()
 
   //win.webContents.send("submitted-form", "hello")
+  ipcMain.on('fileBrowserID', function(e, fileBrowser){
+  dialog.showOpenDialog( {
+    properties: ["openFile", "multiSelections"],
+    filters: [
+    { name: 'Excel Files', extensions: ['xlsx', 'xlsm', 'xlsb'] }
+     ]
+    }).then(result => {
+     if (result.canceled === false) {
+    console.log("Selected file paths:");
+    console.log(result.filePaths[0]);
+    var fileBrowser= result.filePaths[0];
+    fileSelected=1;
+    getStartedWindow.webContents.send('post', fileSelected)
+    }
+    }).catch(err => {
+        console.log(err)
+    })
+  });
+
 }
-
-
 
 // Catch item:add
 //ipcMain.on('item:add', function(e, item){

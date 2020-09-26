@@ -7,6 +7,16 @@ body{
     background-color: #8C939D; */
 }
 
+h1{
+margin-top: 8px;
+text-shadow: 0 2px rgba(0, 0, 0, 0.5);
+}
+
+h3 {
+  margin: 0;
+  font-family: 'Leckerli One';
+}
+
 /*#name{
 color:red;
 }*/
@@ -21,9 +31,14 @@ color:red;
   display: inline-block;
   font-size: 16px;
   /*margin-left: 70px;*/
-  margin-top: 90px;
+  margin-top: 40px;
 }
 
 #openChatBotButton:hover{
 background-color: orange;
+}
+
+
+#selectBtn{
+margin-top: 30px;
 }

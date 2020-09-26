@@ -21,9 +21,13 @@
 
     <h3>Welcome to the Next Gen of MS Excel</h3>
 
+    <div>
+    <button type="button" id='selectBtn' name="FileSelectButton">Select Excel File</button>
+    </div>
 
-  <button type="button" id='openChatBotButton' name="openChatBotButton">Get Started</button>
-
+    <div>
+    <button type="button" id='openChatBotButton' name="openChatBotButton">Get Started</button>
+    </div>
     <!--
       <form id="myForm">
       <input type="text" id="message" name="message" placeholder="Type here" size= 28.5px>
@@ -35,15 +39,32 @@
       <script>
         const electron = require('electron');
         const {ipcRenderer} = electron;
+        //const { dialog } = require('electron')
+        const fs = require('fs');
+        var fileSelected=0;
 
         const printIt = document.getElementById('openChatBotButton')
 
         printIt.addEventListener('click', function (event)
         {
           const openChBotWin = "Creating ChatBot Window"
+          if(fileSelected==0){
+          alert('Please select a file first');
+          }
+          else{
           ipcRenderer.send('openChBotWinID', openChBotWin);
-
+          }
         })
+
+        document.getElementById('selectBtn').addEventListener('click', function (event) {
+        console.log('y');
+        fileBrowser= 'fB'
+        ipcRenderer.send('fileBrowserID', fileBrowser);
+        ipcRenderer.on('post', function(e, fileSel){
+            fileSelected = fileSel;
+        });
+        });
+
         </script>
 
   </body>

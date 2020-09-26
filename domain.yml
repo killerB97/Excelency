@@ -1,41 +1,44 @@
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+actions:
+- action_add_columns
+- action_delete
+- action_undo
+- action_insert_columns
+- action_merge_columns
+- action_sort_columns
+- utter_ask_columns
+- utter_ask_destination
+- utter_ask_pointer
+- utter_ask_symbol
+- utter_cheer_up
+- utter_default
+- utter_did_that_help
+- utter_goodbye
+- utter_greet
+- utter_happy
+- utter_iamabot
+entities:
+- axis
+- destination
+- m_params
+- parameters
+- params
+- pointer
+- symbol
 intents:
-- greet
-- add
 - merge
-- delete
-- insert
+- add
 - sort
 - grateful
+- undo
+- delete
+- bot_challenge
+- greet
+- insert
 - goodbye
 - affirm
 - deny
 - mood_great
 - mood_unhappy
-- bot_challenge
-entities:
-- axis
-- destination
-- parameters
-- params
-- pointer
-
-slots:
-  axis:
-    type: text
-  destination:
-    type: text
-  parameters:
-    type: list
-  params:
-    type: list
-  pointer:
-    type: text
-  symbol:
-    type: text
-
 responses:
   utter_ask_columns:
   - text: Can you specify the input columns?
@@ -49,6 +52,8 @@ responses:
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
+  utter_default:
+  - text: Sorry I didn't understand. Please try again...
   utter_did_that_help:
   - text: Did that help you?
   utter_goodbye:
@@ -61,21 +66,21 @@ responses:
   utter_iamabot:
   - text: I am Lency, If you have a problem with the name take it up with Shourya
       Shukla
-  utter_default:
-  - text: Sorry I didn't understand. Please try again...
-actions:
-- action_add_columns
-- action_delete
-- action_insert_columns
-- action_merge_columns
-- action_sort_columns
-- utter_ask_columns
-- utter_ask_destination
-- utter_ask_pointer
-- utter_cheer_up
-- utter_ask_symbol
-- utter_did_that_help
-- utter_goodbye
-- utter_greet
-- utter_happy
-- utter_iamabot
+session_config:
+  carry_over_slots_to_new_session: true
+  session_expiration_time: 60
+slots:
+  axis:
+    type: text
+  destination:
+    type: text
+  m_params:
+    type: list
+  parameters:
+    type: list
+  params:
+    type: list
+  pointer:
+    type: text
+  symbol:
+    type: text
