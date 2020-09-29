@@ -9,6 +9,7 @@
 - Hi
 - Hello
 - hi there
+- hello there
 
 ## intent:goodbye
 - bye
@@ -69,6 +70,9 @@
 - add [A](parameters) and [B](parameters) to [C](destination) please
 - sum up [B](parameters) and [c](parameters)
 - [G](destination)
+- add [A](parameters) and [B](parameters) to [I](destination)
+- can you add [d](parameters) and [e](parameters) to [J](destination)
+- add [D](parameters) and [e](parameters) to [h](destination)
 
 ## intent:sort
 - can you sort column [B](parameters) in [ascending](pointer) order
@@ -95,7 +99,6 @@
 - also sort [C](destination)
 - short column [g](parameters)
 - short [F](parameters)
-- [ascending](pointer)
 
 ## intent:insert
 - Can you insert a column in between [B](parameters) and [C](parameters)
@@ -144,6 +147,8 @@
 - delete all empty [columns](axis)
 - clear [col]{"entity": "axis", "value": "columns"} [C](params)
 - delete [column]{"entity": "axis", "value": "columns"} [f](params)
+- delete [column]{"entity": "axis", "value": "columns"} [j](params)
+- delete [row]{"entity": "axis", "value": "rows"} [3](params)
 
 ## intent:merge
 - please merge columns [c](m_params) and [d] {"entity":"m_params", "role": "second"}
@@ -166,7 +171,9 @@
 - revert back to the previous state
 - revert the changes
 - undo the change
-
+- please undo that
+- undo please
+- undo that please
 
 ## intent:affirm
 - yes
@@ -205,6 +212,7 @@
 - Thank you that was great
 - thank you
 - thanks a lot
+- thanks this was super helpful
 
 ## intent:mood_unhappy
 - sad

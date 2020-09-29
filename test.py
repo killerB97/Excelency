@@ -1,7 +1,7 @@
 import xlwings as xw
 import pandas as pd
 
-def colNameToNum(name):
+'''def colNameToNum(name):
     pow = 1
     colNum = 0
     for letter in name[::-1]:
@@ -19,4 +19,9 @@ sheet1 = wbook.used_range.value
 df = pd.DataFrame(sheet1)
 wbook.range(columns[0]+'1').options(index=False, header=False, transpose=True).value  = df[[pd_cols[0], pd_cols[1]]].apply(lambda row: ' '.join(row.values.astype(str)), axis=1).values 
 wbook.range(columns[1]+':'+columns[1]).api.clear_contents()
-#dispatcher.utter_message(text="Sure I'll delete all empty columns")
+#dispatcher.utter_message(text="Sure I'll delete all empty columns")'''
+
+b = 6
+a=b
+b = 8
+print(a)

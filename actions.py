@@ -44,7 +44,7 @@ class ActionAddColumns(Action):
             pd_cols[i] = self.colNameToNum(n) 
         sheet1 = wbook.used_range.value
         df = pd.DataFrame(sheet1)
-        previous_state = df
+        previous_state = df.copy()
         wbook.range(dest+'1').options(index=False, header=False, transpose=True).value = df[pd_cols[0]].values+df[pd_cols[1]].values
         dispatcher.utter_message(text="{} I have added the columns {} and {} for you and stored it in column {}".format(random.choice(start),columns[0],columns[1], dest))
 
@@ -137,7 +137,7 @@ class ActionDeleteColumns(Action):
         param = tracker.get_slot('params')
         sheet1 = wbook.used_range.value
         df = pd.DataFrame(sheet1)
-        previous_state = df
+        previous_state = df.copy()
         if axis.lower() == 'rows' and param==None:
             wbook.clear_contents()
             df.dropna(how='all', inplace=True)
@@ -207,7 +207,8 @@ class ActionUndo(Action):
         global start
         global previous_state
         wbook = xw.Book('test.xlsx').sheets[0]
-        wbook.range('A1').value = previous_state
+        wbook.clear_contents()
+        wbook.range('A1').options(index=False, header=False).value = previous_state.values
         dispatcher.utter_message(text="{} I have managed to undo the previous change".format(random.choice(start)))
 
         return []

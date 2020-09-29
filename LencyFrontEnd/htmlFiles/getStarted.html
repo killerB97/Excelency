@@ -39,6 +39,7 @@
       <script>
         const electron = require('electron');
         const {ipcRenderer} = electron;
+        const {shell} = require('electron')
         //const { dialog } = require('electron')
         const fs = require('fs');
         var fileSelected=0;
@@ -62,6 +63,7 @@
         ipcRenderer.send('fileBrowserID', fileBrowser);
         ipcRenderer.on('post', function(e, fileSel){
             fileSelected = fileSel;
+            shell.openPath(fileBrowser)
         });
         });
 

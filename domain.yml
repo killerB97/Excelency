@@ -1,10 +1,10 @@
 actions:
 - action_add_columns
 - action_delete
-- action_undo
 - action_insert_columns
 - action_merge_columns
 - action_sort_columns
+- action_undo
 - utter_ask_columns
 - utter_ask_destination
 - utter_ask_pointer
@@ -25,14 +25,14 @@ entities:
 - pointer
 - symbol
 intents:
-- merge
-- add
-- sort
-- grateful
 - undo
 - delete
-- bot_challenge
+- grateful
 - greet
+- add
+- merge
+- sort
+- bot_challenge
 - insert
 - goodbye
 - affirm

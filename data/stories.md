@@ -471,3 +471,40 @@
 ## undo happy path
 * undo
     - action_undo
+## interactive_story_1
+* greet
+    - utter_greet
+* add{"parameters": "B", "destination": "I"}
+    - slot{"destination": "I"}
+    - slot{"parameters": ["A", "B"]}
+    - action_add_columns
+* undo
+    - action_undo
+* add{"parameters": "e", "destination": "J"}
+    - slot{"destination": "J"}
+    - slot{"parameters": ["d", "e"]}
+    - action_add_columns
+* undo
+    - action_undo
+* add{"parameters": "e", "destination": "h"}
+    - slot{"destination": "h"}
+    - slot{"parameters": ["D", "e"]}
+    - action_add_columns
+* undo
+    - action_undo
+* delete{"axis": "columns", "params": "j"}
+    - slot{"axis": "columns"}
+    - slot{"params": ["j"]}
+    - action_delete
+    - slot{"params": null}
+* undo
+    - action_undo
+* delete{"axis": "rows", "params": "3"}
+    - slot{"axis": "rows"}
+    - slot{"params": ["3"]}
+    - action_delete
+    - slot{"params": null}
+* undo
+    - action_undo
+* grateful
+    - utter_happy

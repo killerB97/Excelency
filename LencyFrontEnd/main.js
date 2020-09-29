@@ -132,6 +132,7 @@ request(options, function (error, response, body) {
     console.log("Selected file paths:");
     console.log(result.filePaths[0]);
     var fileBrowser= result.filePaths[0];
+    shell.openPath(fileBrowser)
     fileSelected=1;
     getStartedWindow.webContents.send('post', fileSelected)
     }
