@@ -1,13 +1,18 @@
 actions:
 - action_add_columns
+- action_color_condition
 - action_delete
 - action_insert_columns
 - action_merge_columns
 - action_sort_columns
 - action_undo
-- utter_ask_columns
+- utter_ask_color
+- utter_ask_continue
 - utter_ask_destination
+- utter_ask_merge_parameters
+- utter_ask_parameters
 - utter_ask_pointer
+- utter_ask_sort_parameters
 - utter_ask_symbol
 - utter_cheer_up
 - utter_default
@@ -18,34 +23,52 @@ actions:
 - utter_iamabot
 entities:
 - axis
+- color
+- condition
 - destination
 - m_params
 - parameters
+- parameters_cC
 - params
 - pointer
 - symbol
+- value_cC
+forms:
+- add_info
+- merge_info
+- sort_info
 intents:
+- add
+- color_condition
+- deny
+- merge
+- sort
+- out_of_scope
 - undo
 - delete
 - grateful
 - greet
-- add
-- merge
-- sort
 - bot_challenge
 - insert
 - goodbye
 - affirm
-- deny
 - mood_great
 - mood_unhappy
 responses:
-  utter_ask_columns:
-  - text: Can you specify the input columns?
+  utter_ask_color:
+  - text: Can you specify the color?
+  utter_ask_continue:
+  - text: Do you want to continue?
   utter_ask_destination:
-  - text: Can you specify the destination column?
+  - text: Can you specify the destination column or cell?
+  utter_ask_merge_parameters:
+  - text: two input columns are required, please specify both?
+  utter_ask_parameters:
+  - text: at least one input column is needed, please specify it?
   utter_ask_pointer:
   - text: can you specify if it is ascending or descending?
+  utter_ask_sort_parameters:
+  - text: can you please specify the input column?
   utter_ask_symbol:
   - text: can you specify the merge separator symbol by text, click enter to go with
       default space.
@@ -54,6 +77,7 @@ responses:
     text: 'Here is something to cheer you up:'
   utter_default:
   - text: Sorry I didn't understand. Please try again...
+  - text: Sorry I am not designed to handle this query...
   utter_did_that_help:
   - text: Did that help you?
   utter_goodbye:
@@ -70,17 +94,34 @@ session_config:
   carry_over_slots_to_new_session: true
   session_expiration_time: 60
 slots:
+  add_parameters:
+    type: unfeaturized
   axis:
     type: text
-  destination:
+  color:
     type: text
-  m_params:
+  condition:
     type: list
+  destination:
+    type: unfeaturized
+  m_params:
+    type: unfeaturized
+  merge_parameters:
+    type: unfeaturized
   parameters:
+    auto_fill: false
+    type: unfeaturized
+  parameters_cC:
     type: list
   params:
     type: list
   pointer:
     type: text
+  requested_slot:
+    type: unfeaturized
+  sort_parameters:
+    type: unfeaturized
   symbol:
     type: text
+  value_cC:
+    type: list

@@ -1,7 +1,9 @@
 import xlwings as xw
 import pandas as pd
+import webcolors
+import xlsxwriter
 
-'''def colNameToNum(name):
+def colNameToNum(name):
     pow = 1
     colNum = 0
     for letter in name[::-1]:
@@ -10,18 +12,18 @@ import pandas as pd
     return colNum-1
 
 wbook = xw.Book('test.xlsx').sheets[0]
-#columns = tracker.get_slot('parameters')
-columns = ['A', 'B']
+#columns = tracker.get_slot('add_parameters')
+#dest = tracker.get_slot('destination')
+columns = ['E','D']
+dest = 'H'
 pd_cols = columns[:]
-for i,n in enumerate(columns):
-    pd_cols[i] = colNameToNum(n) 
 sheet1 = wbook.used_range.value
 df = pd.DataFrame(sheet1)
-wbook.range(columns[0]+'1').options(index=False, header=False, transpose=True).value  = df[[pd_cols[0], pd_cols[1]]].apply(lambda row: ' '.join(row.values.astype(str)), axis=1).values 
-wbook.range(columns[1]+':'+columns[1]).api.clear_contents()
-#dispatcher.utter_message(text="Sure I'll delete all empty columns")'''
-
-b = 6
-a=b
-b = 8
-print(a)
+apple = '(30,70, inclusive=False)'
+index = eval('df.loc[3,df.loc[3].between'+apple+'].index.tolist()')
+#index = df[df[3]>30].index.tolist() 
+clr = webcolors.name_to_rgb('yellow')
+for i in index:
+    wbook.range(xlsxwriter.utility.xl_col_to_name(i)+'4').color = clr
+    #wbook.range('D'+str(i+1)).color = clr
+#dispatcher.utter_message(text="Sure I'll delete all empty columns"

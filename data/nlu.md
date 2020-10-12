@@ -73,6 +73,24 @@
 - add [A](parameters) and [B](parameters) to [I](destination)
 - can you add [d](parameters) and [e](parameters) to [J](destination)
 - add [D](parameters) and [e](parameters) to [h](destination)
+- can you add [G](parameters) and [H](parameters) to [I](destination)
+- can you sum them again
+- [c](destination)
+- add to [K](destination)
+- add to [I](destination)
+- [J](parameters) and [L](parameters)
+- can you sum up [I](parameters) and [a](parameters)
+- to [G](destination)
+- add [A](parameters) [B](parameters) and [C](parameters) to [P](destination)
+- total column [G](parameters) to [M7](destination)
+- can you sum up
+- can you add [D](parameters) [G](parameters) and [I](parameters) to [F](destination)
+- sum up column [F](parameters) and store in [G12](destination)
+- ca you add col [D](parameters) to [b9](destination)
+- can you total [B](parameters) to [i7](destination)
+- please sum up column [E](parameters) to [h22](destination)
+- [B](parameters)
+- add [A](parameters) and [B](parameters) to [C](destination)
 
 ## intent:sort
 - can you sort column [B](parameters) in [ascending](pointer) order
@@ -99,6 +117,8 @@
 - also sort [C](destination)
 - short column [g](parameters)
 - short [F](parameters)
+- sort column
+- can you sort column [a](parameters)
 
 ## intent:insert
 - Can you insert a column in between [B](parameters) and [C](parameters)
@@ -160,9 +180,13 @@
 - can you merge column [C](m_params) and [D]{"entity": "m_params", "role": "second"}
 - [+](symbol)
 - [-](symbol)
-- [/](symbol)
+- /
 - merge column [D](m_params) and [e]{"entity": "m_params", "role": "second"}
 - [:](symbol)
+- can you merge [A](m_params) and [B]{"entity": "m_params", "role": "second"}
+- *
+- also merge column [D](m_params)
+- [D](m_params) and [E]{"entity": "m_params", "role": "second"}
 
 ## intent:undo
 - can you please undo the last function
@@ -181,6 +205,17 @@
 - of course
 - that sounds good
 - correct
+- sure
+- ok
+- why not
+- ok great
+- yes I did
+- yeah, great
+- pretty good
+- fine
+- You bet
+- I sure did
+- more or less
 
 ## intent:deny
 - no
@@ -189,6 +224,15 @@
 - don't like that
 - no way
 - not really
+- none
+- absolutely not
+- no thanks
+- didn't do any
+- no I didn't
+- could have been better
+- not great
+- nope
+- $
 
 ## intent:mood_great
 - perfect
@@ -234,11 +278,99 @@
 - who are you
 - who is this
 
+## intent:out_of_scope
+- that's not what I want to do
+- wait stop
+- you're no help
+- this is no help at all
+- how old are you
+- I want to order a pizza
+- tell me the weather
+- this isn't working
+- I already told you that
+- don't like that
+- I don't want to tell you that
+- none of your business
+- that's not right
+- stop asking
+- nevermind
+- I want to do something else
+- I changed my mind
+- how tall is Obama
+- How many goals did lionel messi score in 2012
+- tell me the height of empire state building
+- jkhdjakshdjkahs
+- hsajdha ajhsdhak asdhsga afagsd
+- lkjdqlwij
+- random musing in my mind sound so good
+- sorry i think i made a mistake
+
+## intent:color_condition
+- color all cells [more](condition) than [11](value_cC) [black](color)
+- color all data with value [equal](condition) to [23](value_cC)
+- color all cells in [row](axis) [four](parameters_cC) with value [13](condition)
+- please color [column](axis) [e](parameters_cC)
+- please color [column](axis) [e](parameters_cC) [orange](color)
+- color elements in [column](axis) [b](parameters_cC) [equal](condition) to [24](parameters_cC)
+- color all elements in [column](axis) [a](parameters_cC) which are [greater](condition) than [5](value_cC) [yellow](color)
+- please color all cells in [row](axis) [3](parameters_cC) [higher](condition) than [100](value_cC)
+- color all elements in [column](axis) [E](parameters_cC) which are [more](condition) than [11](value_cC) [black](color)
+- please color values in [row](axis) [2](parameters_cC) [above](condition) [20](value_cC) [green](color)
+- color all elements in [column](axis) [c](parameters_cC) [exceeding](condition) [18](value_cC) [yellow](color)
+- please color all cells in [row](axis) [3](parameters_cC) which [exceed](condition) [100](value_cC) [red](color)
+- color all elements in [column](axis) [F](parameters_cC) which are [more](condition) than [11](value_cC)
+- please color all cells in [row](axis) [2](parameters_cC) which are [above](condition) [20](value_cC) [green](color)
+- color all elements in [column](axis) [f](parameters_cC) which are [over](condition) [15](value_cC) [black](color)
+- color all elements in [column](axis) [a](parameters_cC) which are [lower](condition) than [5](value_cC) [yellow](color)
+- please color all cells in [row](axis) [3](parameters_cC) [less](condition) than [103](value_cC) [red](color)
+- if cells in [column] [d](parameters_cC) are [lesser](condition) than [0](value_cC) then color them [brown](color)
+- color all elements in [column](axis) [A](parameters_cC) which are [lesser](condition) than [11](value_cC) [black](color)
+- please color values in [row]{"entity": "axis", "value": "rows"} [2](parameters_cC) [below](condition) [20](value_cC) [green](color)
+- color all elements in [column]{"entity": "axis", "value": "columns"} [c](parameters_cC) [under](condition) [18](value_cC)
+- please color all cells in [row]{"entity": "axis", "value": "rows"} [3](parameters_cC) [smaller](condition) [100](value_cC) [red](color)
+- color all elements in [column]{"entity": "axis", "value": "columns"} [f](parameters_cC) which are [small](condition) than [47](value_cC) [black](color)
+- please color all cells in [row]{"entity": "axis", "value": "rows"} [2](parameters_cC) which are [low](condition) [20](value_cC) [green](color)
+- please color data in [column]{"entity": "axis", "value": "columns"} [h](parameters_cC) which are [greater](condition) than or [equal](condition) to [10](value_cC)
+- color all elements in [row]{"entity": "axis", "value": "rows"}[2](parameters_cC) [more](condition) than or [equal](condition) to [7](value_cC) [grey](color)
+- if cells in [column]{"entity": "axis", "value": "columns"} [d](parameters_cC) are [equal] to or [greater](condition) than [0](value_cC) then color them [red](color)
+- color [pink](color) data in [row]{"entity": "axis", "value": "rows"} [7](parameters_cC) [less](condition) than or [equal](condition) to [50](value_cC)
+- color elements in [column]{"entity": "axis", "value": "columns"} [E](parameters_cC) [equal](condition) to or [less](condition) than [31](value_cC)
+- color all cells in [column]{"entity": "axis", "value": "columns"} [b](parameters_cC) [greater](condition) than [equal](condition) to [11](value_cC)
+- [blue](color)
+
+## synonym: between
+- between
+
 ## synonym:columns
 - column
 - col
 - cols
 - verticals
+
+## synonym:equal
+- equal to
+- equal
+
+## synonym:greater
+- higher
+- more
+- exceeding
+- larger
+- above
+- bigger
+- beyond
+- over
+- greater than
+- more than
+
+## synonym:lesser
+- lower
+- less
+- smaller
+- small
+- below
+- under
+- low
 
 ## synonym:rows
 - row

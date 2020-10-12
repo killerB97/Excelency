@@ -9,10 +9,12 @@ app = Flask(__name__)
 @app.route('/speech', methods= ['POST','GET'])
 def post():
     r = sr.Recognizer()
-    with sr.Microphone() as source:  # mention source it will be either Microphone or audio files.
-        print("Speak Anything :")
-        audio = r.listen(source)
-    message = r.recognize_google(audio)  # use recognizer to convert our audio into text part.
+    with sr.Microphone() as source:
+        try:  # mention source it will be either Microphone or audio files.
+            audio = r.listen(source,timeout=7.0)
+            message = r.recognize_google(audio)
+        except:
+            message = ''  # use recognizer to convert our audio into text part.
     return jsonify({'stt':message})
 
 
