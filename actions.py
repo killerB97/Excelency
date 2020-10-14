@@ -17,6 +17,8 @@ from rasa_sdk.forms import FormAction, REQUESTED_SLOT
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, FollowupAction
 import webcolors
+import matplotlib.colors as mcolors
+import difflib
 import xlsxwriter
 import random
 
@@ -467,43 +469,46 @@ class ActionColorCondition(Action):
         global previous_state
         wbook = xw.Book('test.xlsx').sheets[0]
         axis = tracker.get_slot('axis')
-        row_col = tracker.get_slot('parameters_cC')
+        row_col = tracker.get_slot('parameters_cC')[0]
         condition = tracker.get_slot('condition')
         color = tracker.get_slot('color')
         value= tracker.get_slot('value_cC')
+        sheet1 = wbook.used_range.value
+        df = pd.DataFrame(sheet1)
+        previous_state = df.copy()
         print(axis,row_col,condition,value)
         if condition and all(elem == "greater" for elem in condition):
             condition = '>'
-        elif condition and all(elem in ("greater","equal") for elem in condition):
+        elif set(condition)==set(['greater','equal']):
             condition = '>='
         elif condition and all(elem=="equal" for elem in condition):
             condition = '=='
         elif condition and all(elem=="lesser" for elem in condition):
             condition = '<'
-        elif condition and all(elem in ("lesser","equal") for elem in condition):
+        elif set(condition)==set(['lesser','equal']):
             condition = '<='
         elif condition and all(elem=="between" for elem in condition):
             condition = '.between'
-        elif condition and all(elem in ("greater","lesser") for elem in condition):
+        elif set(condition)==set(['greater','lesser']):
             condition = '.between'
         #Main color condition case everything given-
         if axis!=None and row_col!=None and condition!=None and  value!=None:
                 if len(value)>1:
-                    if value[0]>value[1]:
-                        gr_value = '(value[1],value[0],inclusive=False)'
+                    if int(value[0])>int(value[1]):
+                        gr_value = '('+value[1]+','+value[0]+','+'inclusive=False)'
                     else:
-                        gr_value = '(value[0],value[1],inclusive=False)'
+                        gr_value = '('+value[0]+','+value[1]+','+'inclusive=False)'
                 else:
-                    gr_value = 'value[0]'
-
+                    gr_value = value[0]
+                print(gr_value)
                 if(axis=='rows'):
-                    index = eval('df.loc[row_col,df.loc[row_col]'+condition+gr_value+'].index.tolist()')
+                    index = eval('df.loc[int(row_col)-1,df.loc[int(row_col)-1]'+condition+gr_value+'].index.tolist()')
                     try:
                         clr = webcolors.name_to_rgb(color) 
                     except:
                         clr = (255,255,255)
                     for i in index:
-                        wbook.range(xlsxwriter.utility.xl_col_to_name(i)+str(int(row_col)+1)).color = clr
+                        wbook.range(xlsxwriter.utility.xl_col_to_name(i)+str(int(row_col))).color = clr
 
                 elif(axis=='columns'):
                     index = eval('df[df[self.colNameToNum(row_col)]'+condition+gr_value+'].index.tolist()')
@@ -520,3 +525,75 @@ class ActionColorCondition(Action):
 
         #Yet to create all other cases where everything is not given
 
+class ActionColorForm(FormAction):
+
+    def name(self) -> Text:
+        """Unique identifier of the form"""
+        return "color_info"
+
+    @staticmethod
+    def required_slots(tracker: Tracker) -> List[Text]:
+        """A list of required slots that the form has to fill"""
+        return ["color"]
+
+    def request_next_slot(
+        self,
+        dispatcher,  # type: CollectingDispatcher
+        tracker,  # type: Tracker
+        domain,  # type: Dict[Text, Any]
+    ):
+        # type: (...) -> Optional[List[Dict]]
+        """Request the next slot and utter template if needed,
+            else return None"""
+
+        for slot in self.required_slots(tracker):
+            if self._should_request_slot(tracker, slot):
+                dispatcher.utter_template(
+                    "utter_ask_{}".format(slot),
+                    tracker,
+                    silent_fail=False,
+                    **tracker.slots
+                )
+                return [SlotSet(REQUESTED_SLOT, slot)]
+
+        # no more required slots to fill
+        return None
+
+    def submit(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+        ) -> List[Dict]:
+        """Define what the form has to do
+            after all required slots are filled"""
+        # utter submit template
+        return []
+
+    def slot_mappings(self) -> Dict[Text, Union[Dict, List[Dict]]]:
+        """A dictionary to map required slots to
+            - an extracted entity
+            - intent: value pairs
+            - a whole message
+            or a list of them, where a first match will be picked"""
+        
+        return {
+            "color": [self.from_entity(entity="color", intent=None),self.from_text(intent=None),]
+        }
+    
+    def validate_color(self,
+                 value: Text,
+                 dispatcher: CollectingDispatcher,
+                 tracker: Tracker,
+                 domain: Dict[Text, Any]) -> List[Dict]:
+        """Validate extracted requested slot
+                else reject the execution of the form action
+        """
+        # extract other slots that were not requested
+        # but set by corresponding entity
+        color_list = mcolors.CSS4_COLORS
+        if value not in color_list.keys():
+            value = difflib.get_close_matches(value,color_list.keys(),1)[0]
+        # we'll check when validation failed in order
+        # to add appropriate utterances
+        return {"color": value}

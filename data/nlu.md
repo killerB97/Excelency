@@ -337,8 +337,13 @@
 - color elements in [column]{"entity": "axis", "value": "columns"} [E](parameters_cC) [equal](condition) to or [less](condition) than [31](value_cC)
 - color all cells in [column]{"entity": "axis", "value": "columns"} [b](parameters_cC) [greater](condition) than [equal](condition) to [11](value_cC)
 - [blue](color)
+- can you color all cells in [row]{"entity": "axis", "value": "rows"} [3](parameters_cC) [equal](condition) to [76](value_cC)
+- [gray](color)
+- also color all cells in [column]{"entity": "axis", "value": "columns"} [E](parameters_cC) [between](condition) [5](value_cC) and [20](value_cC)
+- [green](color)
+- can you color all cells [pink](color) in [column]{"entity": "axis", "value": "columns"} [G](parameters_cC) [below]{"entity": "condition", "value": "lesser"} [100](value_cC)
 
-## synonym: between
+## synonym:between
 - between
 
 ## synonym:columns

@@ -37,9 +37,10 @@ forms:
 - add_info
 - merge_info
 - sort_info
+- color_info
 intents:
-- add
 - color_condition
+- add
 - deny
 - merge
 - sort
@@ -99,7 +100,7 @@ slots:
   axis:
     type: text
   color:
-    type: text
+    type: unfeaturized
   condition:
     type: list
   destination:
