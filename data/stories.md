@@ -40,7 +40,6 @@
   - action_add_columns
   - followup{"name": "action_restart"}
   - action_restart
-  - action_listen
 
 
 ## add form stop
@@ -70,15 +69,8 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
-## out of scope
-* out_of_scope
-    - action_default_fallback
 
-## restart
-- action_restart
-- action_listen
 
 
 ## add form
@@ -94,7 +86,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add
     - add_info
     - form{"name": "add_info"}
@@ -109,7 +100,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add{"destination": "K"}
     - slot{"destination": "K"}
     - action_deactivate_form
@@ -134,7 +124,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add{"parameters": "a"}
     - add_info
     - form{"name": "add_info"}
@@ -152,7 +141,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
 ## add new path 1
 * add{"parameters": "C", "destination": "P"}
@@ -168,7 +156,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add{"parameters": "G", "destination": "M7"}
     - slot{"destination": "M7"}
     - add_info
@@ -184,7 +171,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add
     - add_info
     - form{"name": "add_info"}
@@ -209,7 +195,6 @@
   - action_sort_columns
   - followup{"name": "action_restart"}
   - action_restart
-  - action_listen
 
 ## sort form stop
 * greet
@@ -238,33 +223,27 @@
     - action_sort_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
 
 ## insert happy path
-* sort
+* insert
   - action_insert_columns
   - followup{"name": "action_restart"}
   - action_restart
-  - action_listen
 
 ## delete happy path
 * delete
   - action_delete
   - followup{"name": "action_restart"}
   - action_restart
-  - action_listen
 
 
-## fallback
-- action_default_fallback
 
 ## undo happy path
 * undo
   - action_undo
   - followup{"name": "action_restart"}
   - action_restart
-  - action_listen
 
 
 
@@ -282,7 +261,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add{"parameters": "F", "destination": "G12"}
     - slot{"destination": "G12"}
     - add_info
@@ -298,7 +276,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add{"parameters": "D", "destination": "b9"}
     - slot{"destination": "b9"}
     - add_info
@@ -314,7 +291,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add{"parameters": "B", "destination": "i7"}
     - slot{"destination": "i7"}
     - add_info
@@ -330,7 +306,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * add{"parameters": "E", "destination": "h22"}
     - slot{"destination": "h22"}
     - add_info
@@ -346,7 +321,6 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
 ## sort long path
 * sort
@@ -367,7 +341,6 @@
     - action_sort_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 * sort{"parameters": "a"}
     - sort_info
     - form{"name": "sort_info"}
@@ -385,7 +358,6 @@
     - action_sort_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
 ## merge happy path
 * greet
@@ -397,7 +369,6 @@
   - action_merge_columns
   - followup{"name": "action_restart"}
   - action_restart
-  - action_listen
 
 ## merge form stop
 * greet
@@ -426,16 +397,15 @@
     - action_merge_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
 
 ## merge long path
-* merge{"m_params": "B"}
-    - slot{"m_params": "B"}
+* merge{"parameters": "B"}
+    - slot{"parameters": "B"}
     - merge_info
     - form{"name": "merge_info"}
-    - slot{"m_params": null}
-    - slot{"m_params": ["A", "B"]}
+    - slot{"parameters": null}
+    - slot{"parameters": ["A", "B"]}
     - slot{"merge_parameters": ["A", "B"]}
     - slot{"requested_slot": "symbol"}
 * form: merge
@@ -446,18 +416,17 @@
     - action_merge_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
-* merge{"m_params": "D"}
-    - slot{"m_params": "D"}
+* merge{"parameters": "D"}
+    - slot{"parameters": "D"}
     - merge_info
     - form{"name": "merge_info"}
-    - slot{"m_params": null}
-    - slot{"m_params": null}
-    - slot{"requested_slot": "m_params"}
-* form: merge{"m_params": "E"}
-    - slot{"m_params": "E"}
+    - slot{"parameters": null}
+    - slot{"parameters": null}
+    - slot{"requested_slot": "parameters"}
+* form: merge{"parameters": "E"}
+    - slot{"parameters": "E"}
     - form: merge_info
-    - slot{"m_params": ["D", "E"]}
+    - slot{"parameters": ["D", "E"]}
     - slot{"merge_parameters": ["D", "E"]}
     - slot{"requested_slot": "symbol"}
 * form: deny
@@ -468,7 +437,6 @@
     - action_merge_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
 
 ## restart add
@@ -485,46 +453,19 @@
     - action_add_columns
     - followup{"name": "action_restart"}
     - action_restart
-    - action_listen
 
-## color fill restart 1
-* color_condition{"axis": "rows", "parameters_cC": "3", "condition": "equal", "value_cC": "76"}
-    - slot{"axis": "rows"}
-    - slot{"condition": ["equal"]}
-    - slot{"parameters_cC": ["3"]}
-    - slot{"value_cC": ["76"]}
-    - utter_ask_color
-* color_condition{"color": "gray"}
-    - slot{"color": "gray"}
-    - action_color_condition
-    - followup{"name": "action_restart"}
-    - action_restart
-    - action_listen
-
-## color fill restart 2
-* color_condition{"axis": "columns", "parameters_cC": "E", "condition": "between", "value_cC": "20"}
-    - slot{"axis": "columns"}
-    - slot{"condition": ["between"]}
-    - slot{"parameters_cC": ["E"]}
-    - slot{"value_cC": ["5", "20"]}
-    - utter_ask_color
-* color_condition{"color": "green"}
-    - slot{"color": "green"}
-    - action_color_condition
-    - followup{"name": "action_restart"}
-    - action_restart
-    - action_listen
 
 ## interactive_story_1
-* color_condition{"color": "pink", "axis": "columns", "parameters_cC": "G", "condition": "lesser", "value_cC": "100"}
+* color_condition{"color": "pink", "axis": "columns", "parameters": "G", "condition": "lesser", "value_cC": "100"}
     - slot{"axis": "columns"}
     - slot{"color": "pink"}
     - slot{"condition": ["lesser"]}
-    - slot{"parameters_cC": ["G"]}
+    - slot{"parameters": ["G"]}
     - slot{"value_cC": ["100"]}
     - action_color_condition
     - followup{"name": "action_restart"}
     - action_restart
+
 
 
 ## add happy path
@@ -537,4 +478,55 @@
   - action_color_condition
   - followup{"name": "action_restart"}
   - action_restart
-  - action_listen
+
+## interactive_story_1
+* color_condition{"axis": "columns", "parameters": "I", "condition": "between", "value_cC": "150"}
+    - slot{"axis": "columns"}
+    - slot{"condition": ["between"]}
+    - slot{"parameters": ["I"]}
+    - slot{"value_cC": ["50", "150"]}
+    - color_info
+    - form{"name": "color_info"}
+    - slot{"requested_slot": "color"}
+* form: color_condition{"color": "cyan"}
+    - slot{"color": "cyan"}
+    - form: color_info
+    - slot{"color": "cyan"}
+    - form{"name": null}
+    - slot{"requested_slot": null}
+    - action_color_condition
+    - followup{"name": "action_restart"}
+    - action_restart
+
+## interactive_story_1
+* add{"parameters": "I", "destination": "L"}
+    - slot{"destination": "L"}
+    - add_info
+    - form{"name": "add_info"}
+    - slot{"destination": "L"}
+    - slot{"parameters": ["G", "I"]}
+    - slot{"destination": "L"}
+    - slot{"add_parameters": ["G", "I"]}
+    - form{"name": null}
+    - slot{"requested_slot": null}
+    - action_add_columns
+    - followup{"name": "action_restart"}
+    - action_restart
+
+## interactive_story_2
+* color_condition{"axis": "rows", "parameters": "4", "color": "blue", "condition": "lesser", "value_cC": "50"}
+    - slot{"axis": "rows"}
+    - slot{"color": "blue"}
+    - slot{"condition": ["lesser"]}
+    - slot{"parameters": ["4"]}
+    - slot{"value_cC": ["50"]}
+    - action_color_condition
+    - followup{"name": "action_restart"}
+    - action_restart
+
+
+## filename
+* filename
+    - action_filename
+
+

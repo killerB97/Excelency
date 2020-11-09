@@ -1,10 +1,12 @@
 actions:
+- action_filename
 - action_add_columns
 - action_color_condition
 - action_delete
 - action_insert_columns
 - action_merge_columns
 - action_sort_columns
+- action_graphs
 - action_undo
 - utter_ask_color
 - utter_ask_continue
@@ -22,27 +24,28 @@ actions:
 - utter_happy
 - utter_iamabot
 entities:
+- filename
 - axis
 - color
 - condition
 - destination
-- m_params
 - parameters
-- parameters_cC
+- graph_type
 - params
 - pointer
 - symbol
 - value_cC
 forms:
 - add_info
+- color_info
 - merge_info
 - sort_info
-- color_info
 intents:
-- color_condition
 - add
+- color_condition
 - deny
 - merge
+- filename
 - sort
 - out_of_scope
 - undo
@@ -71,8 +74,11 @@ responses:
   utter_ask_sort_parameters:
   - text: can you please specify the input column?
   utter_ask_symbol:
-  - text: can you specify the merge separator symbol by text, click enter to go with
-      default space.
+  - text: can you specify the merge separator symbol by text, click enter to go with default space.
+  utter_ask_graph_type:
+  - text: can you specify what type of graph among (line, bar and scatter), you would like to create?
+  utter_graph_parameters:
+  - text: Please specify both the start cell in the top left and the end cell in the bottom right.
   utter_cheer_up:
   - image: https://i.imgur.com/nGF1K8f.jpg
     text: 'Here is something to cheer you up:'
@@ -97,6 +103,8 @@ session_config:
 slots:
   add_parameters:
     type: unfeaturized
+  filename:
+    type: unfeaturized
   axis:
     type: text
   color:
@@ -105,17 +113,10 @@ slots:
     type: list
   destination:
     type: unfeaturized
-  m_params:
-    type: unfeaturized
   merge_parameters:
     type: unfeaturized
   parameters:
-    auto_fill: false
     type: unfeaturized
-  parameters_cC:
-    type: list
-  params:
-    type: list
   pointer:
     type: text
   requested_slot:
@@ -126,3 +127,7 @@ slots:
     type: text
   value_cC:
     type: list
+  graph_type:
+    type: unfeaturized
+  graph_parameters:
+    type: unfeaturized

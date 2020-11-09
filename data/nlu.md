@@ -91,6 +91,7 @@
 - please sum up column [E](parameters) to [h22](destination)
 - [B](parameters)
 - add [A](parameters) and [B](parameters) to [C](destination)
+- add column [G](parameters) and [I](parameters) to [L](destination)
 
 ## intent:sort
 - can you sort column [B](parameters) in [ascending](pointer) order
@@ -150,43 +151,43 @@
 - get rid of all empty [verticals](axis)
 - get rid of empty [rows](axis)
 - clear out empty [column](axis)
-- delete [row](axis) [5](params)
-- remove [col](axis) [J](params)
-- clear [column](axis) [I](params)
-- get rid of [row](axis) [8](params)
-- delete [cols](axis) [A](params)
+- delete [row](axis) [5](parameters)
+- remove [col](axis) [J](parameters)
+- clear [column](axis) [I](parameters)
+- get rid of [row](axis) [8](parameters|)
+- delete [cols](axis) [A](parameters)
 - can you delete all empty [rows](axis)
-- can you delete [column]{"entity": "axis", "value": "columns"} [B](params)
+- can you delete [column]{"entity": "axis", "value": "columns"} [B](parameters)
 - remove all empty [columns](axis)
-- clear [row]{"entity": "axis", "value": "rows"} [2](params)
-- remove [row]{"entity": "axis", "value": "rows"} [3](params)
-- clear [column]{"entity": "axis", "value": "columns"} [c](params)
-- please delete [column]{"entity": "axis", "value": "columns"} [B](params)
-- can you delete [column]{"entity": "axis", "value": "columns"} [D](params)
-- delete [column]{"entity": "axis", "value": "columns"} [G](params) please
+- clear [row]{"entity": "axis", "value": "rows"} [2](parameters)
+- remove [row]{"entity": "axis", "value": "rows"} [3](parameters)
+- clear [column]{"entity": "axis", "value": "columns"} [c](parameters)
+- please delete [column]{"entity": "axis", "value": "columns"} [B](parameters)
+- can you delete [column]{"entity": "axis", "value": "columns"} [D](parameters)
+- delete [column]{"entity": "axis", "value": "columns"} [G](parameters) please
 - delete all empty [columns](axis)
-- clear [col]{"entity": "axis", "value": "columns"} [C](params)
-- delete [column]{"entity": "axis", "value": "columns"} [f](params)
-- delete [column]{"entity": "axis", "value": "columns"} [j](params)
-- delete [row]{"entity": "axis", "value": "rows"} [3](params)
+- clear [col]{"entity": "axis", "value": "columns"} [C](parameters)
+- delete [column]{"entity": "axis", "value": "columns"} [f](parameters)
+- delete [column]{"entity": "axis", "value": "columns"} [j](parameters)
+- delete [row]{"entity": "axis", "value": "rows"} [3](parameters)
 
 ## intent:merge
-- please merge columns [c](m_params) and [d] {"entity":"m_params", "role": "second"}
-- can you merge columns [A](m_params) and [e] {"entity":"m_params", "role": "second"}
-- merge [F](m_params) and [J] {"entity":"m_params", "role": "second"}
-- please combine [S](m_params) and [t] {"entity":"m_params", "role": "second"}
-- combine cols [k](m_params) and [d] {"entity":"m_params", "role": "second"}
-- merge the columns [G](m_params) and [H] {"entity":"m_params", "role": "second"}
-- can you merge column [C](m_params) and [D]{"entity": "m_params", "role": "second"}
+- please merge columns [c](parameters) and [d] {"entity":"parameters", "role": "second"}
+- can you merge columns [A](parameters) and [e] {"entity":"parameters", "role": "second"}
+- merge [F](parameters) and [J] {"entity":"parameters", "role": "second"}
+- please combine [S](parameters) and [t] {"entity":"parameters", "role": "second"}
+- combine cols [k](parameters) and [d] {"entity":"parameters", "role": "second"}
+- merge the columns [G](parameters) and [H] {"entity":"parameters", "role": "second"}
+- can you merge column [C](parameters) and [D]{"entity": "parameters", "role": "second"}
 - [+](symbol)
 - [-](symbol)
 - /
-- merge column [D](m_params) and [e]{"entity": "m_params", "role": "second"}
+- merge column [D](parameters) and [e]{"entity": "parameters", "role": "second"}
 - [:](symbol)
-- can you merge [A](m_params) and [B]{"entity": "m_params", "role": "second"}
+- can you merge [A](parameters) and [B]{"entity": "parameters", "role": "second"}
 - *
-- also merge column [D](m_params)
-- [D](m_params) and [E]{"entity": "m_params", "role": "second"}
+- also merge column [D](parameters)
+- [D](parameters) and [E]{"entity": "parameters", "role": "second"}
 
 ## intent:undo
 - can you please undo the last function
@@ -278,6 +279,10 @@
 - who are you
 - who is this
 
+## intent:filename
+- [C:\Users\DELL\PycharmProjects\Excelency\LencyFrontEnd\css.xlsx](filename)
+- [C:\User\jvkhv.xlsx](filename)
+
 ## intent:out_of_scope
 - that's not what I want to do
 - wait stop
@@ -308,40 +313,58 @@
 ## intent:color_condition
 - color all cells [more](condition) than [11](value_cC) [black](color)
 - color all data with value [equal](condition) to [23](value_cC)
-- color all cells in [row](axis) [four](parameters_cC) with value [13](condition)
-- please color [column](axis) [e](parameters_cC)
-- please color [column](axis) [e](parameters_cC) [orange](color)
-- color elements in [column](axis) [b](parameters_cC) [equal](condition) to [24](parameters_cC)
-- color all elements in [column](axis) [a](parameters_cC) which are [greater](condition) than [5](value_cC) [yellow](color)
-- please color all cells in [row](axis) [3](parameters_cC) [higher](condition) than [100](value_cC)
-- color all elements in [column](axis) [E](parameters_cC) which are [more](condition) than [11](value_cC) [black](color)
-- please color values in [row](axis) [2](parameters_cC) [above](condition) [20](value_cC) [green](color)
-- color all elements in [column](axis) [c](parameters_cC) [exceeding](condition) [18](value_cC) [yellow](color)
-- please color all cells in [row](axis) [3](parameters_cC) which [exceed](condition) [100](value_cC) [red](color)
-- color all elements in [column](axis) [F](parameters_cC) which are [more](condition) than [11](value_cC)
-- please color all cells in [row](axis) [2](parameters_cC) which are [above](condition) [20](value_cC) [green](color)
-- color all elements in [column](axis) [f](parameters_cC) which are [over](condition) [15](value_cC) [black](color)
-- color all elements in [column](axis) [a](parameters_cC) which are [lower](condition) than [5](value_cC) [yellow](color)
-- please color all cells in [row](axis) [3](parameters_cC) [less](condition) than [103](value_cC) [red](color)
-- if cells in [column] [d](parameters_cC) are [lesser](condition) than [0](value_cC) then color them [brown](color)
-- color all elements in [column](axis) [A](parameters_cC) which are [lesser](condition) than [11](value_cC) [black](color)
-- please color values in [row]{"entity": "axis", "value": "rows"} [2](parameters_cC) [below](condition) [20](value_cC) [green](color)
-- color all elements in [column]{"entity": "axis", "value": "columns"} [c](parameters_cC) [under](condition) [18](value_cC)
-- please color all cells in [row]{"entity": "axis", "value": "rows"} [3](parameters_cC) [smaller](condition) [100](value_cC) [red](color)
-- color all elements in [column]{"entity": "axis", "value": "columns"} [f](parameters_cC) which are [small](condition) than [47](value_cC) [black](color)
-- please color all cells in [row]{"entity": "axis", "value": "rows"} [2](parameters_cC) which are [low](condition) [20](value_cC) [green](color)
-- please color data in [column]{"entity": "axis", "value": "columns"} [h](parameters_cC) which are [greater](condition) than or [equal](condition) to [10](value_cC)
-- color all elements in [row]{"entity": "axis", "value": "rows"}[2](parameters_cC) [more](condition) than or [equal](condition) to [7](value_cC) [grey](color)
-- if cells in [column]{"entity": "axis", "value": "columns"} [d](parameters_cC) are [equal] to or [greater](condition) than [0](value_cC) then color them [red](color)
-- color [pink](color) data in [row]{"entity": "axis", "value": "rows"} [7](parameters_cC) [less](condition) than or [equal](condition) to [50](value_cC)
-- color elements in [column]{"entity": "axis", "value": "columns"} [E](parameters_cC) [equal](condition) to or [less](condition) than [31](value_cC)
-- color all cells in [column]{"entity": "axis", "value": "columns"} [b](parameters_cC) [greater](condition) than [equal](condition) to [11](value_cC)
+- color all cells in [row](axis) [four](parameters) with value [13](condition)
+- please color [column](axis) [e](parameters)
+- please color [column](axis) [e](parameters) [orange](color)
+- color elements in [column](axis) [b](parameters) [equal](condition) to [24](parameters)
+- color all elements in [column](axis) [a](parameters) which are [greater](condition) than [5](value_cC) [yellow](color)
+- please color all cells in [row](axis) [3](parameters) [higher](condition) than [100](value_cC)
+- color all elements in [column](axis) [E](parameters) which are [more](condition) than [11](value_cC) [black](color)
+- please color values in [row](axis) [2](parameters) [above](condition) [20](value_cC) [green](color)
+- color all elements in [column](axis) [c](parameters) [exceeding](condition) [18](value_cC) [yellow](color)
+- please color all cells in [row](axis) [3](parameters) which [exceed](condition) [100](value_cC) [red](color)
+- color all elements in [column](axis) [F](parameters) which are [more](condition) than [11](value_cC)
+- please color all cells in [row](axis) [2](parameters) which are [above](condition) [20](value_cC) [green](color)
+- color all elements in [column](axis) [f](parameters) which are [over](condition) [15](value_cC) [black](color)
+- color all elements in [column](axis) [a](parameters) which are [lower](condition) than [5](value_cC) [yellow](color)
+- please color all cells in [row](axis) [3](parameters) [less](condition) than [103](value_cC) [red](color)
+- if cells in [column] [d](parameters) are [lesser](condition) than [0](value_cC) then color them [brown](color)
+- color all elements in [column](axis) [A](parameters) which are [lesser](condition) than [11](value_cC) [black](color)
+- please color values in [row]{"entity": "axis", "value": "rows"} [2](parameters) [below](condition) [20](value_cC) [green](color)
+- color all elements in [column]{"entity": "axis", "value": "columns"} [c](parameters) [under](condition) [18](value_cC)
+- please color all cells in [row]{"entity": "axis", "value": "rows"} [3](parameters) [smaller](condition) [100](value_cC) [red](color)
+- color all elements in [column]{"entity": "axis", "value": "columns"} [f](parameters) which are [small](condition) than [47](value_cC) [black](color)
+- please color all cells in [row]{"entity": "axis", "value": "rows"} [2](parameters) which are [low](condition) [20](value_cC) [green](color)
+- please color data in [column]{"entity": "axis", "value": "columns"} [h](parameters) which are [greater](condition) than or [equal](condition) to [10](value_cC)
+- color all elements in [row]{"entity": "axis", "value": "rows"}[2](parameters) [more](condition) than or [equal](condition) to [7](value_cC) [grey](color)
+- if cells in [column]{"entity": "axis", "value": "columns"} [d](parameters) are [equal] to or [greater](condition) than [0](value_cC) then color them [red](color)
+- color [pink](color) data in [row]{"entity": "axis", "value": "rows"} [7](parameters) [less](condition) than or [equal](condition) to [50](value_cC)
+- color elements in [column]{"entity": "axis", "value": "columns"} [E](parameters) [equal](condition) to or [less](condition) than [31](value_cC)
+- color all cells in [column]{"entity": "axis", "value": "columns"} [b](parameters) [greater](condition) than [equal](condition) to [11](value_cC)
 - [blue](color)
-- can you color all cells in [row]{"entity": "axis", "value": "rows"} [3](parameters_cC) [equal](condition) to [76](value_cC)
+- can you color all cells in [row]{"entity": "axis", "value": "rows"} [3](parameters) [equal](condition) to [76](value_cC)
 - [gray](color)
-- also color all cells in [column]{"entity": "axis", "value": "columns"} [E](parameters_cC) [between](condition) [5](value_cC) and [20](value_cC)
+- also color all cells in [column]{"entity": "axis", "value": "columns"} [E](parameters) [between](condition) [5](value_cC) and [20](value_cC)
 - [green](color)
-- can you color all cells [pink](color) in [column]{"entity": "axis", "value": "columns"} [G](parameters_cC) [below]{"entity": "condition", "value": "lesser"} [100](value_cC)
+- can you color all cells [pink](color) in [column]{"entity": "axis", "value": "columns"} [G](parameters) [below]{"entity": "condition", "value": "lesser"} [100](value_cC)
+- color all cells in [column]{"entity": "axis", "value": "columns"} [I](parameters) [between](condition) [50](value_cC) and [150](value_cC)
+- [cyan](color)
+- cool color [row]{"entity": "axis", "value": "rows"} [4](parameters) [blue](color) which has vslue [lesser](condition) than [50](value_cC)
+
+## intent:graph
+- Create a [scatter](graph_type) plot
+- Make a [bar](graph_type) graph for range [A1](parameters) to [B7](parameters)
+- Make graph for range C3 to e8
+- Create graph
+- Make chart
+- [Bar](graph_type) Graph for columns [A](parameters), [B](parameters) and [C](parameters)
+- [Line](graph_type) graph for cells from [B2](parameters) - [B6](parameters)
+- Please create a [line](graph_type) graph
+- Create a [scatter](graph_type) plot for row [1](parameters) to row [6](parameters)
+- [Line](graph_type)
+- [Scatter](graph_type)
+- [bar](graph_type)
+
 
 ## synonym:between
 - between
@@ -369,11 +392,11 @@
 - more than
 
 ## synonym:lesser
+- below
 - lower
 - less
 - smaller
 - small
-- below
 - under
 - low
 
@@ -381,3 +404,7 @@
 - row
 - sequence
 - horizontals
+
+
+## regex:filename
+- /.*\.(xlsx|xls|xlsm|xlsb)/g

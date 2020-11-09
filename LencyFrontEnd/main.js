@@ -77,13 +77,23 @@ var options = {
 
 request(options, function (error, response, body) {
   if (!error && response.statusCode == 200) {
-    var gtts = new gTTS(JSON.parse(body)[0]['text'], 'en');   
-    gtts.save('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function (err, result){ 
-    if(err) { throw new Error(err); } 
-    player.play('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function(err){
-      if (err) throw err
-    });  });
-    ChBotWindow.webContents.send('response', JSON.parse(body)[0]['text']);
+    if (JSON.parse(body)[0]['text']){
+      var gtts = new gTTS(JSON.parse(body)[0]['text'], 'en');   
+      gtts.save('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function (err, result){ 
+      if(err) { throw new Error(err); } 
+      player.play('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function(err){
+        if (err) throw err
+      });  });
+      ChBotWindow.webContents.send('response', JSON.parse(body)[0]['text']);}
+    else {
+      var gtts = new gTTS('Sorry, I did not understand that', 'en');   
+      gtts.save('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function (err, result){ 
+      if(err) { throw new Error(err); } 
+      player.play('/Users/raji/Chatbot/LencyFrontEnd/Media/Output.mp3', function(err){
+        if (err) throw err
+      });  });
+      ChBotWindow.webContents.send('response', 'Sorry, I did not understand that');
+    }
 
      // Print the shortened url.
     }

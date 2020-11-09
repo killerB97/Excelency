@@ -11,7 +11,7 @@ def post():
     r = sr.Recognizer()
     with sr.Microphone() as source:
         try:  # mention source it will be either Microphone or audio files.
-            audio = r.listen(source,timeout=7.0)
+            audio = r.listen(source,timeout=5.0)
             message = r.recognize_google(audio)
         except:
             message = ''  # use recognizer to convert our audio into text part.
